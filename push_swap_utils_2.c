@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/13 15:25:25 by dcoelho          ###   ########.fr       */
+/*   Created: 2026/05/13 14:50:41 by dcoelho           #+#    #+#             */
+/*   Updated: 2026/05/13 14:51:06 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include <stdlib.h>
-# include <limits.h>
+#include "push_swap.h"
 
-typedef struct s_list
+long	ft_atoi(const char *nptr)
 {
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+	long	i;
+	long	signal;
 
-int	ft_lstsize(t_list *lst);
-t_list	*ft_lstnew(void *content);
-int	ft_lstsize(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-
-#endif
+	i = 0;
+	signal = 1;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
+	{
+		if (*nptr == '-')
+			signal *= -1;
+		nptr++;
+	}
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		i = i * 10 + *nptr - 48;
+		nptr++;
+	}
+	return (i * signal);
+}
