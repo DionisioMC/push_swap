@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:13:04 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/14 16:33:19 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/14 17:12:13 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,29 @@ int	is_not_long(char *arg)
 		return (0);
 	return (1);
 }
+char	*remove_zeros(char *arg)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	if (arg[i] == '+' || arg[i] == '-')
+		i++;
+	while (arg[i] == '0')
+		i++;
+	if (!arg[i])
+	{
+		arg[j] = '0';
+		return (arg);
+	}
+	if (arg[j] == '-')
+		j++;
+	while (arg[i])
+		arg[j++] = arg[i++];
+	arg[j] = '\0';
+	return (arg);
+}
 
 int	has_not_repeated(int argc, char **argv)
 {
@@ -71,7 +94,7 @@ int	has_not_repeated(int argc, char **argv)
 			j = i + 1;
 			while (j < argc)
 			{
-				if (argv[i] == argv[j])
+				if (remove_zeros(argv[i]) == remove_zeros(argv[j]))
 					return (0);
 				j++;
 			}
