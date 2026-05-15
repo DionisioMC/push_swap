@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/15 15:27:07 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/15 17:35:41 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,12 @@ int	get_target_position(t_list **stack_b, int value)
 
 	i = 0;
 	if (!stack_b)
-	return (0);
+		return (0);
 	node = *stack_b;
 	while (node->next)
 	{
 		if (*(node->content) > value && *(node->next->content) < value)
 			return (i + 1);
-
 		node = node->next;
 		i++;
 	}
@@ -100,18 +99,27 @@ void	insertion_sort(t_list **stack_a)
 
 	node = *stack_a;
 	stack_b = NULL;
-	while (node)
+	while (*stack_a)
 	{
-		value = *(node->content);
+		value = *((*stack_a)->content);
 		pos = get_target_position(stack_b, value);
 		rotate_b_to_top(stack_b, pos);
-		push(stack_b, stack_a);
-		write(1, "pa\n", 3);
+		if (stack_b)
+		{
+			push(stack_b, stack_a);
+		}
+		else
+		{
+			*stack_a = node->next;
+			stack_b = &node;
+			node->next = NULL;
+		}
+		write(1, "pb\n", 3);
 	}
 	while (*stack_b)
 	{
 		push(stack_a, stack_b);
-		write(1, "pb\n", 3);
+		write(1, "pa\n", 3);
 	}
 }
 
