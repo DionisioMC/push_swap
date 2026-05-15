@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_check.c                                      :+:      :+:    :+:   */
+/*   error_check_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:13:04 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/14 17:12:13 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/15 15:34:18 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+#include "push_swap.h"
 
-int	is_flag(char *arg)
+int	check_flag(char *arg)
 {
 	char	*flags[5];
 	int		i;
@@ -26,7 +26,7 @@ int	is_flag(char *arg)
 	while (i < 5)
 	{
 		if (arg == flags[i])
-			return (1);
+			return (i);
 		i++;
 	}
 	return (0);
@@ -89,7 +89,7 @@ int	has_not_repeated(int argc, char **argv)
 	i = 1;
 	while (i < argc - 1)
 	{
-		if (!is_flag(argv[i]))
+		if (!check_flag(argv[i]))
 		{
 			j = i + 1;
 			while (j < argc)
