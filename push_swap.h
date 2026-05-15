@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/15 14:46:30 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/15 15:47:43 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	swap_double(t_list **stack_a, t_list **stack_b);
 void	rotate(t_list **stack);
 void	reverse_rotate(t_list **stack);
 void	push(t_list **stack_a, t_list **stack_b);
+char	**ft_split(char const *s, char c);
 
 #endif
