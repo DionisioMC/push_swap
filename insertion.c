@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/15 17:35:41 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/17 23:15:31 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,22 @@ int	find_min(t_list *stack)
 	return (min);
 }
 
-int	get_target_position(t_list **stack_b, int value)
+int	get_target_position(t_list **stack, int value)
 {
 	int		i;
 	t_list	*node;
 
 	i = 0;
-	if (!stack_b)
+	if (!stack)
 		return (0);
-	node = *stack_b;
+	node = *stack;
 	while (node->next)
 	{
 		if (*(node->content) > value && *(node->next->content) < value)
-			return (i + 1);
+			return (i);
 		node = node->next;
 		i++;
 	}
-	if (value > find_max(node) || value < find_min(node))
-		return (0);
-
 	return (0);
 }
 
@@ -70,9 +67,9 @@ void	rotate_b_to_top(t_list **stack_b, int pos)
 	if (!stack_b)
 		return ;
 	size = ft_lstsize(*stack_b);
+	i = 0;
 	if (pos <= size / 2)
 	{
-		i = 0;
 		while (i++ < pos)
 		{
 			rotate(stack_b);
@@ -81,13 +78,25 @@ void	rotate_b_to_top(t_list **stack_b, int pos)
 	}
 	else
 	{
-		i = 0;
 		while (i++ < size - pos)
 		{
 			reverse_rotate(stack_b);
 			write(1, "rrb\n", 4);
 		}
 	}
+}
+
+#include <stdio.h>
+
+void	print_stack(char *name, t_list *stack)
+{
+	printf("%s: ", name);
+	while (stack)
+	{
+		printf("%d ", *(stack->content));
+		stack = stack->next;
+	}
+	printf("\n");
 }
 
 void	insertion_sort(t_list **stack_a)
@@ -110,30 +119,19 @@ void	insertion_sort(t_list **stack_a)
 		}
 		else
 		{
-			*stack_a = node->next;
+			*stack_a = (*stack_a)->next;
 			stack_b = &node;
 			node->next = NULL;
 		}
-		write(1, "pb\n", 3);
+		print_stack("A", *stack_a);
+		print_stack("B", *stack_b);
+		//write(1, "pb\n", 3);
 	}
 	while (*stack_b)
 	{
 		push(stack_a, stack_b);
 		write(1, "pa\n", 3);
 	}
-}
-
-#include <stdio.h>
-
-void	print_stack(char *name, t_list *stack)
-{
-	printf("%s: ", name);
-	while (stack)
-	{
-		printf("%d ", *(stack->content));
-		stack = stack->next;
-	}
-	printf("\n");
 }
 
 int	main(void)

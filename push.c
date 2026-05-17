@@ -6,23 +6,23 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 18:20:43 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/15 17:48:29 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/17 19:49:25 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_list **stack_a, t_list **stack_b)
+void	push(t_list **a, t_list **b)
 {
-	t_list	*node;
+	t_list	*next_node;
 
-	if (!stack_b)
+	if (!b)
 	{
 		return ;
 	}
-	node = *stack_b;
-	ft_lstadd_front(stack_a, *stack_b);
-	*stack_b = node->next;
+	next_node = (*b)->next,
+	ft_lstadd_front(a, *b);
+	*b = next_node;
 }
 
 /* #include <stdio.h>

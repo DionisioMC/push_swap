@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 12:09:23 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/14 13:59:27 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/17 22:41:21 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ void	rotate(t_list **stack)
 {
 	t_list	*node;
 
-	if (!stack)
+	if (!stack || !(*stack))
 	{
 		return ;
 	}
 	node = *stack;
-	*stack = node->next;
-	node->next = NULL;
 	ft_lstadd_back(stack, node);
+	*stack = (*stack)->next;
+	node->next = NULL;
 }
 
 void	rotate_double(t_list **stack_a, t_list **stack_b)
