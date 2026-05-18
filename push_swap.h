@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/17 19:04:22 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/18 15:03:36 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ void	swap_double(t_list **stack_a, t_list **stack_b);
 void	rotate(t_list **stack);
 void	reverse_rotate(t_list **stack);
 void	push(t_list **a, t_list **b);
+void	ft_lstclear(t_list **lst);
 
 #endif

@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   merge.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 18:20:43 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/18 19:18:06 by dcoelho          ###   ########.fr       */
+/*   Created: 2026/05/18 19:04:32 by dcoelho           #+#    #+#             */
+/*   Updated: 2026/05/18 19:10:52 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_list **a, t_list **b)
+void	merge_sort(t_list **stack_a)
 {
-	t_list	*next_node;
+	t_list	**stack_b;
+	t_list	*node;
 
-	if (!b)
-	{
-		return ;
-	}
-	next_node = (*b)->next,
-	ft_lstadd_front(a, *b);
-	*b = next_node;
+	node = *stack_a;
+	stack_b = NULL;
 }
-
-/* #include <stdio.h>
-int main()
-{
-	t_list	*list_a = ft_lstnew("batata");
-	t_list	*list_b = ft_lstnew("banana");
-	push(&list_a, &list_b);
-	while(list_a)
-	{
-		printf("%s\n", (char *) list_a->content);
-		list_a = list_a->next;
-	}
-} */
