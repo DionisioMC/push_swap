@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 14:50:41 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/14 14:38:36 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/19 15:00:07 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (!lst || !del)
 		return ;
-	del(lst->content);
+	del(&(lst->content));
 	free(lst);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	n;
+
+	n = 0;
+	while ((s1[n] == s2[n]) && (s1[n] != '\0'))
+	{
+		n++;
+	}
+	return (s1[n] - s2[n]);
 }
