@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/19 12:26:00 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 15:12:42 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	error_and_exit(t_list **sa, t_list **sb)
 	exit(1);
 }
 
-void	error_flag_check(int argc, char **argv, int strategy, int bench)
+void	error_flag_check(int argc, char **argv, int *strategy, int *bench)
 {
 	int	i;
 
@@ -50,10 +50,10 @@ void	error_flag_check(int argc, char **argv, int strategy, int bench)
 	{
 		if (check_flag(argv[i]))
 		{
-			if (check_flag(argv[i]) == 4)
-				bench = 1;
+			if (check_flag(argv[i]) == 5)
+				*bench = 1;
 			else
-				strategy = check_flag(argv[i]);
+				*strategy = check_flag(argv[i]);
 		}
 		else
 		{

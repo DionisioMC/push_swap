@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:13:04 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/19 12:40:02 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 14:57:11 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 int	check_flag(char *arg)
 {
-	char	*flags[5];
+	char	*flags[6];
 	int		i;
 
-	flags[0] = "--simple";
-	flags[1] = "--medium";
-	flags[2] = "--complex";
-	flags[3] = "--adaptive";
-	flags[4] = "--bench";
-	i = 0;
-	while (i < 5)
+	flags[0] = NULL;
+	flags[1] = "--simple";
+	flags[2] = "--medium";
+	flags[3] = "--complex";
+	flags[4] = "--adaptive";
+	flags[5] = "--bench";
+	i = 1;
+	while (i < 6)
 	{
-		if (arg == flags[i])
+		if (ft_strcmp(arg, flags[i]) == 0)
 			return (i);
 		i++;
 	}

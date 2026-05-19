@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 12:38:49 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 15:02:46 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		is_int(char *arg);
 int		has_not_repeated(int argc, char **argv);
 void	error_and_exit(t_list **sa, t_list **sb);
 t_list	*parsing(int argc, char **argv);
-void	error_flag_check(int argc, char **argv, int strategy, int bench);
+void	error_flag_check(int argc, char **argv, int *strategy, int *bench);
 void	print_stack(char *name, t_list *stack);
 int		ft_strcmp(char *s1, char *s2);
 
