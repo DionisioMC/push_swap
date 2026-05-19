@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/18 15:06:40 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/19 15:12:42 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	ft_lstclear(t_list **lst)
 		while (current)
 		{
 			next = current->next;
-			free(current->content);
-			current->content = NULL;
+			free(&(current->content));
 			free(current);
 			current = next;
 		}
@@ -34,18 +33,57 @@ void	ft_lstclear(t_list **lst)
 
 void	error_and_exit(t_list **sa, t_list **sb)
 {
-	if (!sa || *sa)
+	if (sa && *sa)
 		ft_lstclear(sa);
-	if (!sb || *sb)
+	if (sb && *sb)
 		ft_lstclear(sb);
 	write(2, "Error\n", 6);
 	exit(1);
 }
 
-/* int	error_flag_check(int argc, char **argv, int strategy, int bench)
+void	error_flag_check(int argc, char **argv, int *strategy, int *bench)
 {
 	int	i;
 
-	i = 0;
-	while ()
-} */
+	i = 1;
+	while (i < argc)
+	{
+		if (check_flag(argv[i]))
+		{
+			if (check_flag(argv[i]) == 5)
+				*bench = 1;
+			else
+				*strategy = check_flag(argv[i]);
+		}
+		else
+		{
+			if (!is_valid_num(argv[i]) || !is_int(argv[i]))
+				error_and_exit(NULL, NULL);
+		}
+		i++;
+	}
+	if (!has_not_repeated(argc, argv))
+		error_and_exit(NULL, NULL);
+}
+
+t_list	*parsing(int argc, char **argv)
+{
+	int		i;
+	t_list	*sa;
+	int	content;
+
+	i = 1;
+	sa = NULL;
+	while (i < argc)
+	{
+		if (!check_flag(argv[i]))
+			{
+				content = (int) ft_atoi(argv[i]);
+				ft_lstadd_back(&sa, ft_lstnew(content));
+			}
+		i++;
+	}
+	if (!sa)
+		exit(0);
+	return (sa);
+}

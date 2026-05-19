@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:04:25 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/13 15:21:30 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/19 12:23:58 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
 

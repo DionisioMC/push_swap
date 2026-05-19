@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/18 19:06:41 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/19 12:27:44 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int	find_max(t_list *stack)
 {
 	int	max;
 
-	max = *(stack->content);
+	max = stack->content;
 	while (stack)
 	{
-		if (*(stack->content) > max)
-			max = *(stack->content);
+		if (stack->content > max)
+			max = stack->content;
 		stack = stack->next;
 	}
 	return (max);
@@ -30,11 +30,11 @@ int	find_min(t_list *stack)
 {
 	int	min;
 
-	min = *(stack->content);
+	min = stack->content;
 	while (stack)
 	{
-		if (*(stack->content) < min)
-			min = *(stack->content);
+		if (stack->content < min)
+			min = stack->content;
 		stack = stack->next;
 	}
 	return (min);
@@ -51,7 +51,7 @@ int	get_target_position(t_list **stack, int value)
 	node = *stack;
 	while (node->next)
 	{
-		if (*(node->content) > value && *(node->next->content) < value)
+		if (node->content > value && node->next->content < value)
 			return (i + 1);
 		else if (value >= find_max(*stack) && *(node->next->content) == find_max(*stack))
 			return (i + 1);
@@ -101,7 +101,7 @@ void	insertion_sort(t_list **stack_a)
 	stack_b = NULL;
 	while (*stack_a)
 	{
-		value = *((*stack_a)->content);
+		value = node->content;
 		pos = get_target_position(stack_b, value);
 		rotate_b_to_top(stack_b, pos);
 		if (stack_b)
@@ -133,13 +133,13 @@ void	print_stack(char *name, t_list *stack)
 	printf("%s: ", name);
 	while (stack)
 	{
-		printf("%d ", *(stack->content));
+		printf("%d ", stack->content);
 		stack = stack->next;
 	}
 	printf("\n");
 }
 
-int	main(void)
+/* int	main(void)
 {
 	t_list	*a;
 	t_list	*b;
