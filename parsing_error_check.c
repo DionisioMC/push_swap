@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/15 16:24:17 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 12:26:00 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	ft_lstclear(t_list **lst)
 		while (current)
 		{
 			next = current->next;
-			free(current->content);
-			current->content = NULL;
+			free(&(current->content));
 			free(current);
 			current = next;
 		}
@@ -34,9 +33,9 @@ void	ft_lstclear(t_list **lst)
 
 void	error_and_exit(t_list **sa, t_list **sb)
 {
-	if (!sa || *sa)
+	if (sa && *sa)
 		ft_lstclear(sa);
-	if (!sb || *sb)
+	if (sb && *sb)
 		ft_lstclear(sb);
 	write(2, "Error\n", 6);
 	exit(1);
@@ -46,7 +45,7 @@ void	error_flag_check(int argc, char **argv, int strategy, int bench)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (i < argc)
 	{
 		if (check_flag(argv[i]))
@@ -63,6 +62,28 @@ void	error_flag_check(int argc, char **argv, int strategy, int bench)
 		}
 		i++;
 	}
-	if (!has_not_repeated(argv))
+	if (!has_not_repeated(argc, argv))
 		error_and_exit(NULL, NULL);
+}
+
+t_list	*parsing(int argc, char **argv)
+{
+	int		i;
+	t_list	*sa;
+	int	content;
+
+	i = 1;
+	sa = NULL;
+	while (i < argc)
+	{
+		if (!check_flag(argv[i]))
+			{
+				content = (int) ft_atoi(argv[i]);
+				ft_lstadd_back(&sa, ft_lstnew(content));
+			}
+		i++;
+	}
+	if (!sa)
+		exit(0);
+	return (sa);
 }
