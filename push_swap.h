@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 15:02:46 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:29:49 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,8 @@ t_list	*parsing(int argc, char **argv);
 void	error_flag_check(int argc, char **argv, int *strategy, int *bench);
 void	print_stack(char *name, t_list *stack);
 int		ft_strcmp(char *s1, char *s2);
+void	insertion_sort(t_list **stack_a, t_list **stack_b);
+int		find_max(t_list *stack);
+int		find_min(t_list *stack);
 
 #endif

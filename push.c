@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 18:20:43 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/18 19:18:06 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/19 18:26:40 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ void	push(t_list **a, t_list **b)
 	t_list	*next_node;
 
 	if (!b)
-	{
 		return ;
-	}
-	next_node = (*b)->next,
+	next_node = (*b)->next;
 	ft_lstadd_front(a, *b);
 	*b = next_node;
 }
