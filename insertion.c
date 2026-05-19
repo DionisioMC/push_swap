@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 12:27:44 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 15:49:44 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,9 @@ int	get_target_position(t_list **stack, int value)
 	{
 		if (node->content > value && node->next->content < value)
 			return (i + 1);
-		else if (value >= find_max(*stack) && *(node->next->content) == find_max(*stack))
+		else if (value >= find_max(*stack) && node->next->content == find_max(*stack))
 			return (i + 1);
-		else if (value < find_min(*stack) && *(node->next->content) == find_min(*stack))
+		else if (value < find_min(*stack) && node->next->content == find_min(*stack))
 			return (i + 2);
 		node = node->next;
 		i++;
@@ -101,7 +101,7 @@ void	insertion_sort(t_list **stack_a)
 	stack_b = NULL;
 	while (*stack_a)
 	{
-		value = node->content;
+		value = (*stack_a)->content;
 		pos = get_target_position(stack_b, value);
 		rotate_b_to_top(stack_b, pos);
 		if (stack_b)
@@ -112,9 +112,11 @@ void	insertion_sort(t_list **stack_a)
 			stack_b = &node;
 			node->next = NULL;
 		}
+		print_stack("A", *stack_a);
+		print_stack("B", *stack_b);
 		write(1, "pb\n", 3);
 	}
-	if (*((*stack_b)->content) != find_max(*stack_b))
+	if ((*stack_b)->content != find_max(*stack_b))
 	{
 		pos = get_target_position(stack_b, find_max(*stack_b));
 		rotate_b_to_top(stack_b, pos);
@@ -139,7 +141,8 @@ void	print_stack(char *name, t_list *stack)
 	printf("\n");
 }
 
-/* int	main(void)
+
+int	main(void)
 {
 	t_list	*a;
 	t_list	*b;
@@ -153,13 +156,13 @@ void	print_stack(char *name, t_list *stack)
 	int num_4 = 0;
 	int num_5 = 5;
 	int num_6 = -1;
-	ft_lstadd_back(&a, ft_lstnew(&num_0));
-	ft_lstadd_back(&a, ft_lstnew(&num_1));
-	ft_lstadd_back(&a, ft_lstnew(&num_2));
-	ft_lstadd_back(&a, ft_lstnew(&num_3));
-	ft_lstadd_back(&a, ft_lstnew(&num_4));
-	ft_lstadd_back(&a, ft_lstnew(&num_5));
-	ft_lstadd_back(&a, ft_lstnew(&num_6));
+	ft_lstadd_back(&a, ft_lstnew(num_0));
+	ft_lstadd_back(&a, ft_lstnew(num_1));
+	ft_lstadd_back(&a, ft_lstnew(num_2));
+	ft_lstadd_back(&a, ft_lstnew(num_3));
+	ft_lstadd_back(&a, ft_lstnew(num_4));
+	ft_lstadd_back(&a, ft_lstnew(num_5));
+	ft_lstadd_back(&a, ft_lstnew(num_6));
 	printf("INITIAL\n");
 	print_stack("A", a);
 	print_stack("B", b);
@@ -170,3 +173,4 @@ void	print_stack(char *name, t_list *stack)
 	print_stack("B", b);
 	ft_lstclear(&a);
 }
+

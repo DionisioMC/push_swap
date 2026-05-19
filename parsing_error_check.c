@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/19 15:12:42 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 15:38:16 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	ft_lstclear(t_list **lst)
 		while (current)
 		{
 			next = current->next;
-			free(&(current->content));
 			free(current);
 			current = next;
 		}
