@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 14:13:25 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/13 15:36:47 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/17 20:12:27 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ void	swap(t_list **stack)
 	t_list	*first;
 	t_list	*second;
 
-	if (!stack)
-	{
-		return ;
-	}
-	if (ft_lstsize(*stack) <= 1)
+	if (!stack || !(*stack)->next)
 	{
 		return ;
 	}

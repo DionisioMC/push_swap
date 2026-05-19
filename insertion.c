@@ -40,26 +40,26 @@ int	find_min(t_list *stack)
 	return (min);
 }
 
-int	get_target_position(t_list **stack_b, int value)
+int	get_target_position(t_list **stack, int value)
 {
 	int		i;
 	t_list	*node;
 
 	i = 0;
-	if (!stack_b)
-	return (0);
-	node = *stack_b;
+	if (!stack)
+		return (0);
+	node = *stack;
 	while (node->next)
 	{
 		if (node->content > value && node->next->content < value)
 			return (i + 1);
-
+		else if (value >= find_max(*stack) && *(node->next->content) == find_max(*stack))
+			return (i + 1);
+		else if (value < find_min(*stack) && *(node->next->content) == find_min(*stack))
+			return (i + 2);
 		node = node->next;
 		i++;
 	}
-	if (value > find_max(node) || value < find_min(node))
-		return (0);
-
 	return (0);
 }
 
@@ -71,9 +71,9 @@ void	rotate_b_to_top(t_list **stack_b, int pos)
 	if (!stack_b)
 		return ;
 	size = ft_lstsize(*stack_b);
-	if (pos <= size / 2)
+	i = 0;
+	if (pos <= (size - 1) / 2)
 	{
-		i = 0;
 		while (i++ < pos)
 		{
 			rotate(stack_b);
@@ -82,7 +82,6 @@ void	rotate_b_to_top(t_list **stack_b, int pos)
 	}
 	else
 	{
-		i = 0;
 		while (i++ < size - pos)
 		{
 			reverse_rotate(stack_b);
@@ -100,18 +99,30 @@ void	insertion_sort(t_list **stack_a)
 
 	node = *stack_a;
 	stack_b = NULL;
-	while (node)
+	while (*stack_a)
 	{
 		value = node->content;
 		pos = get_target_position(stack_b, value);
 		rotate_b_to_top(stack_b, pos);
-		push(stack_b, stack_a);
-		write(1, "pa\n", 3);
+		if (stack_b)
+			push(stack_b, stack_a);
+		else
+		{
+			*stack_a = (*stack_a)->next;
+			stack_b = &node;
+			node->next = NULL;
+		}
+		write(1, "pb\n", 3);
+	}
+	if (*((*stack_b)->content) != find_max(*stack_b))
+	{
+		pos = get_target_position(stack_b, find_max(*stack_b));
+		rotate_b_to_top(stack_b, pos);
 	}
 	while (*stack_b)
 	{
 		push(stack_a, stack_b);
-		write(1, "pb\n", 3);
+		write(1, "pa\n", 3);
 	}
 }
 
@@ -135,18 +146,20 @@ void	print_stack(char *name, t_list *stack)
 
 	a = NULL;
 	b = NULL;
-	int num_0 = 4;
+	int num_0 = 8;
 	int num_1 = 1;
 	int num_2 = 3;
 	int num_3 = 2;
-	int num_4 = 8;
+	int num_4 = 0;
 	int num_5 = 5;
+	int num_6 = -1;
 	ft_lstadd_back(&a, ft_lstnew(&num_0));
 	ft_lstadd_back(&a, ft_lstnew(&num_1));
 	ft_lstadd_back(&a, ft_lstnew(&num_2));
 	ft_lstadd_back(&a, ft_lstnew(&num_3));
 	ft_lstadd_back(&a, ft_lstnew(&num_4));
 	ft_lstadd_back(&a, ft_lstnew(&num_5));
+	ft_lstadd_back(&a, ft_lstnew(&num_6));
 	printf("INITIAL\n");
 	print_stack("A", a);
 	print_stack("B", b);
@@ -155,4 +168,5 @@ void	print_stack(char *name, t_list *stack)
 	printf("FINAL\n");
 	print_stack("A", a);
 	print_stack("B", b);
-} */
+	ft_lstclear(&a);
+}

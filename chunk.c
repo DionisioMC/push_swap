@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/13 18:20:43 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/18 19:18:06 by dcoelho          ###   ########.fr       */
+/*   Created: 2026/05/19 10:48:27 by dcoelho           #+#    #+#             */
+/*   Updated: 2026/05/19 11:08:45 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(t_list **a, t_list **b)
+int	sqroot(int i, int nb)
 {
-	t_list	*next_node;
-
-	if (!b)
-	{
-		return ;
-	}
-	next_node = (*b)->next,
-	ft_lstadd_front(a, *b);
-	*b = next_node;
+	if (i * i > nb)
+		return (0);
+	else if (i * i == nb)
+		return (i);
+	return (sqroot(i + 1, nb));
 }
 
-/* #include <stdio.h>
-int main()
+int	ft_sqrt(int nb)
 {
-	t_list	*list_a = ft_lstnew("batata");
-	t_list	*list_b = ft_lstnew("banana");
-	push(&list_a, &list_b);
-	while(list_a)
+	if (nb <= 0)
 	{
-		printf("%s\n", (char *) list_a->content);
-		list_a = list_a->next;
+		return (0);
 	}
-} */
+	return (sqroot(1, nb));
+}
+
+void	chunk_sort(t_list **stack_a)
+{
+	t_list	**stack_b;
+
+	stack_b = NULL;
+}
