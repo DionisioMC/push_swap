@@ -15,12 +15,28 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
 	int				content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_moves
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_moves;
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(int content);
@@ -45,6 +61,8 @@ t_list	*parsing(int argc, char **argv);
 void	error_flag_check(int argc, char **argv, int *strategy, int *bench);
 void	print_stack(char *name, t_list *stack);
 int		ft_strcmp(char *s1, char *s2);
+void	ft_printf(const char *format, ...);
+double	compute_disorder(t_list *sa);
 void	insertion_sort(t_list **stack_a, t_list **stack_b);
 int		find_max(t_list *stack);
 int		find_min(t_list *stack);
