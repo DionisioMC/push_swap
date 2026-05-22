@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+         #
+#    By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 15:27:36 by dcoelho           #+#    #+#              #
-#    Updated: 2026/05/14 15:30:41 by dcoelho          ###   ########.fr        #
+#    Updated: 2026/05/20 14:49:59 by hede-car         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
 FILES = error_check.c push_swap.c push.c rotate.c swap.c \
-	push_swap_utils.c push_swap_utils_2.c
+	push_swap_utils.c push_swap_utils_2.c 
 
 OBJ= $(FILES:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 15:02:46 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/21 11:23:37 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,28 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
 	int				content;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_moves
+{
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
+}	t_moves;
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(int content);
@@ -45,5 +61,7 @@ t_list	*parsing(int argc, char **argv);
 void	error_flag_check(int argc, char **argv, int *strategy, int *bench);
 void	print_stack(char *name, t_list *stack);
 int		ft_strcmp(char *s1, char *s2);
+void	ft_printf(const char *format, ...);
+double	compute_disorder(t_list *sa);
 
 #endif
