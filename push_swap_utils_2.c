@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_utils_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 14:50:41 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 15:00:07 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:30:46 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,32 @@ int	ft_strcmp(char *s1, char *s2)
 		n++;
 	}
 	return (s1[n] - s2[n]);
+}
+
+int	find_max(t_list *stack)
+{
+	int	max;
+
+	max = stack->content;
+	while (stack)
+	{
+		if (stack->content > max)
+			max = stack->content;
+		stack = stack->next;
+	}
+	return (max);
+}
+
+int	find_min(t_list *stack)
+{
+	int	min;
+
+	min = stack->content;
+	while (stack)
+	{
+		if (stack->content < min)
+			min = stack->content;
+		stack = stack->next;
+	}
+	return (min);
 }
