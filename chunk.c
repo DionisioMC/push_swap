@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:48:27 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/21 17:32:56 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/22 16:44:13 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ int	*create_array(int size, t_list *stack_a)
 	int	i;
 	t_list	*node;
 
-	indexes = malloc(size * sizeof(int));
 	node = stack_a;
+	indexes = malloc(size * sizeof(int));
 	if (!indexes)
 		return (NULL);
+	i = 0;
 	while (node)
 	{
 		indexes[i++] = node->content;
@@ -117,45 +118,73 @@ void	chunk_sort(t_list **stack_a, t_list **stack_b)
 	while (i < num_chunks)
 	{
 		j = 0;
-		while (j < chunk_size)
+		if (i < size % num_chunks)
 		{
-			if (indexes[(chunk_size) * (i + 1) - 1] >= (*stack_a)->content)
+			while (j < chunk_size + 1)
 			{
-				push(stack_b, stack_a);
-				write(1, "pb\n", 3);
-				j++;
+				if (indexes[(chunk_size + 1) * (i + 1) - 1] >= (*stack_a)->content)
+				{
+					push(stack_b, stack_a);
+					write(1, "pb\n", 3);
+					j++;
+				}
+				else
+				{
+					rotate(stack_a);
+					write(1, "ra\n", 3);
+				}
 			}
-			else
+		}
+		else
+		{
+			while (j < chunk_size)
 			{
-				rotate(stack_a);
-				write(1, "ra\n", 3);
+				if (indexes[(chunk_size) * (i + 1) - 1 + (size % num_chunks)] >= (*stack_a)->content)
+				{
+					push(stack_b, stack_a);
+					write(1, "pb\n", 3);
+					j++;
+				}
+				else
+				{
+					rotate(stack_a);
+					write(1, "ra\n", 3);
+				}
 			}
 		}
 		i++;
 	}
-	
-	
+	while(*stack_b)
+	{
+		rotate_b_to_top(stack_b, get_target_position(stack_b, find_max(*stack_b)));
+		push(stack_a, stack_b);
+		write(1, "pa\n", 3);
+	}
 }
 
-int	main(void)
+/* int	main(void)
 {
 	t_list	*a;
 	t_list	*b;
 
 	a = NULL;
 	b = NULL;
-	int num_0 = 8;
+	int num_0 = 0;
 	int num_1 = 1;
 	int num_2 = 3;
-	int num_3 = 2;
-	int num_4 = 0;
+	int num_3 = 9;
+	int num_4 = 8;
 	int num_5 = 5;
+	int	num_6 = 2;
+	int	num_7 = 4;
 	ft_lstadd_back(&a, ft_lstnew(num_0));
 	ft_lstadd_back(&a, ft_lstnew(num_1));
 	ft_lstadd_back(&a, ft_lstnew(num_2));
 	ft_lstadd_back(&a, ft_lstnew(num_3));
 	ft_lstadd_back(&a, ft_lstnew(num_4));
 	ft_lstadd_back(&a, ft_lstnew(num_5));
+	ft_lstadd_back(&a, ft_lstnew(num_6));
+	ft_lstadd_back(&a, ft_lstnew(num_7));
 	printf("INITIAL\n");
 	print_stack("A", a);
 	print_stack("B", b);
@@ -165,4 +194,4 @@ int	main(void)
 	print_stack("A", a);
 	print_stack("B", b);
 	ft_lstclear(&a);
-}
+} */

@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:28:32 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 19:00:43 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/22 16:48:14 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,15 @@ int	main(int argc, char **argv)
 
 	strategy = 0;
 	bench = 0;
-	sb = NULL;
+	sb = malloc(sizeof(t_list *));
+	if (!sb)
+		error_and_exit(NULL, NULL);
+	*sb = NULL;
 	error_flag_check(argc, argv, &strategy, &bench);
 	sa = parsing(argc, argv);
 	//print_stack("sa", sa);
-	insertion_sort(&sa, sb);
-	//print_stack("sa", sa);
+	chunk_sort(&sa, sb);
+	/* print_stack("sa", sa);
+	print_stack("sb", *sb); */
+	//ft_printf("%d\n", compute_disorder())
 }
