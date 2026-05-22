@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/21 11:23:37 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/22 11:19:42 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	swap(t_list **stack);
 void	swap_double(t_list **stack_a, t_list **stack_b);
 void	rotate(t_list **stack);
 void	reverse_rotate(t_list **stack);
-void	push(t_list **stack_a, t_list **stack_b);
+void	push(t_list **dest, t_list **source);
 char	**ft_split(char const *s, char c);
 int		check_flag(char *arg);
 int		is_valid_num(char *arg);
@@ -63,5 +63,11 @@ void	print_stack(char *name, t_list *stack);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_printf(const char *format, ...);
 double	compute_disorder(t_list *sa);
+void	insertion_sort(t_list **stack_a, t_list **stack_b);
+int		find_max(t_list *stack);
+int		find_min(t_list *stack);
+void	rotate_b_to_top(t_list **stack_b, int pos);
+int		get_target_position(t_list **stack, int value);
+void	chunk_sort(t_list **stack_a, t_list **stack_b);
 
 #endif

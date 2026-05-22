@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/19 15:38:16 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/19 18:32:36 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,17 +69,17 @@ t_list	*parsing(int argc, char **argv)
 {
 	int		i;
 	t_list	*sa;
-	int	content;
+	int		content;
 
 	i = 1;
 	sa = NULL;
 	while (i < argc)
 	{
 		if (!check_flag(argv[i]))
-			{
-				content = (int) ft_atoi(argv[i]);
-				ft_lstadd_back(&sa, ft_lstnew(content));
-			}
+		{
+			content = (int) ft_atoi(argv[i]);
+			ft_lstadd_back(&sa, ft_lstnew(content));
+		}
 		i++;
 	}
 	if (!sa)

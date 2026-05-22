@@ -6,39 +6,11 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 15:49:44 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/19 18:43:25 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	find_max(t_list *stack)
-{
-	int	max;
-
-	max = stack->content;
-	while (stack)
-	{
-		if (stack->content > max)
-			max = stack->content;
-		stack = stack->next;
-	}
-	return (max);
-}
-
-int	find_min(t_list *stack)
-{
-	int	min;
-
-	min = stack->content;
-	while (stack)
-	{
-		if (stack->content < min)
-			min = stack->content;
-		stack = stack->next;
-	}
-	return (min);
-}
 
 int	get_target_position(t_list **stack, int value)
 {
@@ -53,9 +25,11 @@ int	get_target_position(t_list **stack, int value)
 	{
 		if (node->content > value && node->next->content < value)
 			return (i + 1);
-		else if (value >= find_max(*stack) && node->next->content == find_max(*stack))
+		else if (value >= find_max(*stack)
+			&& node->next->content == find_max(*stack))
 			return (i + 1);
-		else if (value < find_min(*stack) && node->next->content == find_min(*stack))
+		else if (value < find_min(*stack)
+			&& node->next->content == find_min(*stack))
 			return (i + 2);
 		node = node->next;
 		i++;
@@ -90,21 +64,17 @@ void	rotate_b_to_top(t_list **stack_b, int pos)
 	}
 }
 
-void	insertion_sort(t_list **stack_a)
+void	insertion_sort(t_list **stack_a, t_list **stack_b)
 {
-	t_list	**stack_b;
 	t_list	*node;
-	int		value;
 	int		pos;
 
 	node = *stack_a;
-	stack_b = NULL;
 	while (*stack_a)
 	{
-		value = (*stack_a)->content;
-		pos = get_target_position(stack_b, value);
+		pos = get_target_position(stack_b, (*stack_a)->content);
 		rotate_b_to_top(stack_b, pos);
-		if (stack_b)
+		if (stack_b && *stack_b)
 			push(stack_b, stack_a);
 		else
 		{
@@ -112,15 +82,10 @@ void	insertion_sort(t_list **stack_a)
 			stack_b = &node;
 			node->next = NULL;
 		}
-		print_stack("A", *stack_a);
-		print_stack("B", *stack_b);
 		write(1, "pb\n", 3);
 	}
-	if ((*stack_b)->content != find_max(*stack_b))
-	{
-		pos = get_target_position(stack_b, find_max(*stack_b));
-		rotate_b_to_top(stack_b, pos);
-	}
+	pos = get_target_position(stack_b, find_max(*stack_b));
+	rotate_b_to_top(stack_b, pos);
 	while (*stack_b)
 	{
 		push(stack_a, stack_b);
@@ -142,7 +107,7 @@ void	print_stack(char *name, t_list *stack)
 }
 
 
-int	main(void)
+/* int	main(void)
 {
 	t_list	*a;
 	t_list	*b;
@@ -172,5 +137,5 @@ int	main(void)
 	print_stack("A", a);
 	print_stack("B", b);
 	ft_lstclear(&a);
-}
+} */
 

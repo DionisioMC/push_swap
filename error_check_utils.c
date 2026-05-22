@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_check_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:13:04 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/19 14:57:11 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/19 18:29:12 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	has_not_repeated(int argc, char **argv)
 {
 	int	i;
 	int	j;
-	
+
 	i = 1;
 	while (i < argc - 1)
 	{
@@ -97,7 +97,8 @@ int	has_not_repeated(int argc, char **argv)
 			j = i + 1;
 			while (j < argc)
 			{
-				if (ft_strcmp(remove_zeros(argv[i]), remove_zeros(argv[j])) == 0)
+				if (ft_strcmp(remove_zeros(argv[i]), remove_zeros(argv[j]))
+					== 0)
 					return (0);
 				j++;
 			}
