@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/22 11:19:42 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/23 23:11:55 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,8 @@ int		find_min(t_list *stack);
 void	rotate_b_to_top(t_list **stack_b, int pos);
 int		get_target_position(t_list **stack, int value);
 void	chunk_sort(t_list **stack_a, t_list **stack_b);
+void	organize_b(int num_chunks, int size, int *indexes, t_list **stack_a, t_list **stack_b);
+void	ft_sort_int_tab(int *tab, int size);
+int		*create_array(int size, t_list *stack_a);
 
 #endif

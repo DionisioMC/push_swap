@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:48:27 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/22 16:44:13 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/23 23:11:08 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,92 +68,20 @@ void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-int	*assign_indexes(int *indexes, t_list *stack_a, int size)
-{
-	t_list	*node;
-	int		i;
-	int		j;
-	int		*arr;
-
-	i = 0;
-	arr = malloc(size * sizeof(int));
-	if (!arr)
-		return (NULL);
-	while (i < size)
-	{
-		j = 0;
-		node = stack_a;
-		while (j < size)
-		{
-			if (node->content == indexes[j])
-				arr[i] = j;
-			j++;
-			node = node->next;
-		}
-		i++;
-	}
-	free(indexes);
-	return (arr);
-}
-
 #include <stdio.h>
 
 void	chunk_sort(t_list **stack_a, t_list **stack_b)
 {
-	int	size;
-	int	num_chunks;
-	int	*indexes;
-	int	chunk_size;
-	int	i;
-	int	j;
+	int num_chunks;
+	int size;
+	int *indexes;
 
 	size = ft_lstsize(*stack_a);
 	num_chunks = ft_sqrt(size);
 	indexes = create_array(size, *stack_a);
-	i = 0;
 	if(!indexes)
 		error_and_exit(stack_a, stack_b);
-	ft_sort_int_tab(indexes, size);
-	chunk_size = (size / num_chunks);
-	while (i < num_chunks)
-	{
-		j = 0;
-		if (i < size % num_chunks)
-		{
-			while (j < chunk_size + 1)
-			{
-				if (indexes[(chunk_size + 1) * (i + 1) - 1] >= (*stack_a)->content)
-				{
-					push(stack_b, stack_a);
-					write(1, "pb\n", 3);
-					j++;
-				}
-				else
-				{
-					rotate(stack_a);
-					write(1, "ra\n", 3);
-				}
-			}
-		}
-		else
-		{
-			while (j < chunk_size)
-			{
-				if (indexes[(chunk_size) * (i + 1) - 1 + (size % num_chunks)] >= (*stack_a)->content)
-				{
-					push(stack_b, stack_a);
-					write(1, "pb\n", 3);
-					j++;
-				}
-				else
-				{
-					rotate(stack_a);
-					write(1, "ra\n", 3);
-				}
-			}
-		}
-		i++;
-	}
+	organize_b(num_chunks, size, indexes, stack_a, stack_b);
 	while(*stack_b)
 	{
 		rotate_b_to_top(stack_b, get_target_position(stack_b, find_max(*stack_b)));
