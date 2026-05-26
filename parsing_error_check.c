@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_error_check.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/19 18:32:36 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 14:15:13 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,58 +30,146 @@ void	ft_lstclear(t_list **lst)
 	}
 }
 
-void	error_and_exit(t_list **sa, t_list **sb)
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if ((unsigned char) s[i] == (unsigned char) c)
+			return ((char *) &s[i]);
+		i++;
+	}
+	if ((unsigned char) s[i] == (unsigned char) c)
+		return ((char *) &s[i]);
+	return (NULL);
+}
+
+void	handle_flag(char *arg, t_bench *bench)
+{
+	int	flag;
+
+	flag = check_flag(arg);
+	if (flag == 5)
+		bench->flag = 1;
+	else
+		bench->strategy = flag;
+}
+
+char	**handle_str(char *arg, t_bench *bench)
+{
+	char	**args;
+
+	args =	ft_split(arg, ' ');
+	if (!args)
+		error_and_exit(NULL, NULL, bench);
+	return (args);
+}
+
+char	**ft_argv_split(int	argc, char **argv, t_bench *bench)
+{
+	int		i;
+	int		count;
+	char	**args;
+
+	i = 1;
+	count = 0;
+	args = NULL;
+	while (i++ < argc)
+	{
+		if (check_flag(argv[i]))
+			handle_flag(argv[i], bench);
+		else if (strchr(argv[i], ' '))
+			args = handle_str(argv[i], bench);
+		else
+			count++;
+	}
+	if (count > 0 && args)
+	{
+		free_args(args);
+		error_and_exit(NULL, NULL, bench);
+	}
+	if (args)
+		return (args);
+	return (argv);
+}
+
+void	free_args(char **args)
+{
+	int	i;
+
+	i = 0;
+	while (args[i])
+	{
+		free(args[i]);
+		i++;
+	}
+	free(args);
+	return (NULL);
+}
+
+void	error_and_exit(t_list **sa, t_list **sb, t_bench *bench)
 {
 	if (sa && *sa)
 		ft_lstclear(sa);
 	if (sb && *sb)
 		ft_lstclear(sb);
+	free(bench);
 	write(2, "Error\n", 6);
 	exit(1);
 }
 
-void	error_flag_check(int argc, char **argv, int *strategy, int *bench)
+void	error_flag_check(char** args, char **argv, t_bench *bench)
 {
 	int	i;
 
 	i = 1;
-	while (i < argc)
+	if (args != argv)
+		i = 0;
+	while (args[i++])
 	{
-		if (check_flag(argv[i]))
-		{
-			if (check_flag(argv[i]) == 5)
-				*bench = 1;
-			else
-				*strategy = check_flag(argv[i]);
-		}
+		if (check_flag(args[i]))
+			continue ;
 		else
 		{
-			if (!is_valid_num(argv[i]) || !is_int(argv[i]))
-				error_and_exit(NULL, NULL);
+			if (!is_valid_num(args[i]) || !is_int(args[i]))
+			{
+				if (args != argv)
+					free_args(args);
+				error_and_exit(NULL, NULL, bench);
+			}
 		}
-		i++;
 	}
-	if (!has_not_repeated(argc, argv))
-		error_and_exit(NULL, NULL);
+	if (!has_not_repeated(args))
+	{
+		if (args != argv)
+			free_args(args);
+		error_and_exit(NULL, NULL, bench);
+	}
 }
 
-t_list	*parsing(int argc, char **argv)
+t_list	*parsing(char **args, char **argv)
 {
 	int		i;
 	t_list	*sa;
 	int		content;
 
 	i = 1;
+	if (args != argv)
+		i = 0;
 	sa = NULL;
-	while (i < argc)
+	while (args[i])
 	{
-		if (!check_flag(argv[i]))
+		if (!check_flag(args[i]))
 		{
-			content = (int) ft_atoi(argv[i]);
+			content = (int) ft_atoi(args[i]);
 			ft_lstadd_back(&sa, ft_lstnew(content));
 		}
 		i++;
 	}
+	if (args != argv)
+			free_args(args);
 	if (!sa)
 		exit(0);
 	return (sa);
