@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error_check_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:13:04 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/19 18:29:12 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 11:48:25 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,18 +84,18 @@ int	is_int(char *arg)
 	return (1);
 }
 
-int	has_not_repeated(int argc, char **argv)
+int	has_not_repeated(char **argv)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (i < argc - 1)
+	while (argv[i])
 	{
 		if (!check_flag(argv[i]))
 		{
 			j = i + 1;
-			while (j < argc)
+			while (argv[j])
 			{
 				if (ft_strcmp(remove_zeros(argv[i]), remove_zeros(argv[j]))
 					== 0)

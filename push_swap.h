@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/22 11:19:42 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 15:16:39 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-typedef struct s_moves
+typedef struct s_bench
 {
+	int	flag;
+	int	strategy;
+	int	disorder;
 	int	sa;
 	int	sb;
 	int	ss;
@@ -36,7 +39,7 @@ typedef struct s_moves
 	int	rra;
 	int	rrb;
 	int	rrr;
-}	t_moves;
+}	t_bench;
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(int content);
@@ -46,27 +49,33 @@ void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstclear(t_list **lst);
 long	ft_atoi(const char *nptr);
-void	swap(t_list **stack);
-void	swap_double(t_list **stack_a, t_list **stack_b);
-void	rotate(t_list **stack);
-void	reverse_rotate(t_list **stack);
-void	push(t_list **dest, t_list **source);
+void	swap_double(t_list **stack_a, t_list **stack_b, t_bench *bench);
+void	swap_a(t_list **stack_a, t_bench *bench);
+void	swap_b(t_list **stack_b, t_bench *bench);
+void	push_a(t_list **stack_a, t_list **stack_b, t_bench *bench);
+void	push_b(t_list **stack_b, t_list **stack_a, t_bench *bench);
+void	rotate_double(t_list **stack_a, t_list **stack_b, t_bench *bench);
+void	rotate_a(t_list **stack_a, t_bench *bench);
+void	rotate_b(t_list **stack_b, t_bench *bench);
+void	reverse_rotate_double(t_list **stack_a, t_list **stack_b, t_bench *bench);
+void	reverse_rotate_a(t_list **stack_a, t_bench *bench);
+void	reverse_rotate_b(t_list **stack_b, t_bench *bench);
 char	**ft_split(char const *s, char c);
 int		check_flag(char *arg);
 int		is_valid_num(char *arg);
 int		is_int(char *arg);
-int		has_not_repeated(int argc, char **argv);
-void	error_and_exit(t_list **sa, t_list **sb);
-t_list	*parsing(int argc, char **argv);
-void	error_flag_check(int argc, char **argv, int *strategy, int *bench);
+int		has_not_repeated(char **argv);
+void	error_and_exit(t_list **sa, t_list **sb, t_bench *bench);
+t_list	*parsing(char **argv, char **args);
+void	error_flag_check(char** args, char **argv, t_bench *bench);
 void	print_stack(char *name, t_list *stack);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_printf(const char *format, ...);
 double	compute_disorder(t_list *sa);
-void	insertion_sort(t_list **stack_a, t_list **stack_b);
+void	insertion_sort(t_list **stack_a, t_list **stack_b, t_bench *bench);
 int		find_max(t_list *stack);
 int		find_min(t_list *stack);
-void	rotate_b_to_top(t_list **stack_b, int pos);
+void	rotate_b_to_top(t_list **stack_b, int pos, t_bench *bench);
 int		get_target_position(t_list **stack, int value);
 void	chunk_sort(t_list **stack_a, t_list **stack_b);
 

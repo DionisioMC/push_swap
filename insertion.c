@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 18:43:25 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 15:23:07 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	get_target_position(t_list **stack, int value)
 	return (0);
 }
 
-void	rotate_b_to_top(t_list **stack_b, int pos)
+void	rotate_b_to_top(t_list **stack_b, int pos, t_bench *bench)
 {
 	int	size;
 	int	i;
@@ -49,22 +49,16 @@ void	rotate_b_to_top(t_list **stack_b, int pos)
 	if (pos <= (size - 1) / 2)
 	{
 		while (i++ < pos)
-		{
-			rotate(stack_b);
-			write(1, "rb\n", 3);
-		}
+			rotate_b(stack_b, bench);
 	}
 	else
 	{
 		while (i++ < size - pos)
-		{
-			reverse_rotate(stack_b);
-			write(1, "rrb\n", 4);
-		}
+			reverse_rotate_b(stack_b, bench);
 	}
 }
 
-void	insertion_sort(t_list **stack_a, t_list **stack_b)
+void	insertion_sort(t_list **stack_a, t_list **stack_b, t_bench *bench)
 {
 	t_list	*node;
 	int		pos;
@@ -73,24 +67,13 @@ void	insertion_sort(t_list **stack_a, t_list **stack_b)
 	while (*stack_a)
 	{
 		pos = get_target_position(stack_b, (*stack_a)->content);
-		rotate_b_to_top(stack_b, pos);
-		if (stack_b && *stack_b)
-			push(stack_b, stack_a);
-		else
-		{
-			*stack_a = (*stack_a)->next;
-			stack_b = &node;
-			node->next = NULL;
-		}
-		write(1, "pb\n", 3);
+		rotate_b_to_top(stack_b, pos, bench);
+		push_b(stack_b, stack_a, bench);
 	}
 	pos = get_target_position(stack_b, find_max(*stack_b));
-	rotate_b_to_top(stack_b, pos);
+	rotate_b_to_top(stack_b, pos, bench);
 	while (*stack_b)
-	{
-		push(stack_a, stack_b);
-		write(1, "pa\n", 3);
-	}
+		push_a(stack_a, stack_b, bench);
 }
 
 #include <stdio.h>

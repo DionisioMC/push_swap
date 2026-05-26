@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:28:32 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/22 16:48:14 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 14:23:10 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,20 @@
 
 int	main(int argc, char **argv)
 {
-	int		strategy;
-	int		bench;
+	t_bench	*bench;
 	t_list	*sa;
 	t_list	**sb;
+	char	**args;
 
-	strategy = 0;
-	bench = 0;
+	bench = ft_benchnew();
+	args = ft_argv_split(argc, argv, bench->strategy, bench->flag);
+	error_flag_check(args, argv, bench);
+	sa = parsing(args, argv);
+	bench->disorder = compute_disorder(sa);
 	sb = malloc(sizeof(t_list *));
 	if (!sb)
-		error_and_exit(NULL, NULL);
+		error_and_exit(&sa, NULL, bench);
 	*sb = NULL;
-	error_flag_check(argc, argv, &strategy, &bench);
-	sa = parsing(argc, argv);
 	//print_stack("sa", sa);
 	chunk_sort(&sa, sb);
 	/* print_stack("sa", sa);
