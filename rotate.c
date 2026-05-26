@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 12:09:23 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/17 22:41:21 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 14:48:42 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	rotate(t_list **stack)
 	node->next = NULL;
 }
 
-void	rotate_double(t_list **stack_a, t_list **stack_b)
+void	rotate_double(t_list **stack_a, t_list **stack_b, t_bench *bench)
 {
 	if (!stack_a || !stack_b)
 	{
@@ -34,35 +34,22 @@ void	rotate_double(t_list **stack_a, t_list **stack_b)
 	}
 	rotate(stack_a);
 	rotate(stack_b);
+	write(1, "rr\n", 3);
+	bench->rr += 1;
 }
 
-void	reverse_rotate(t_list **stack)
+void	rotate_a(t_list **stack_a, t_bench *bench)
 {
-	t_list	*node;
-	t_list	*last_node;
-
-	if (!stack)
-	{
-		return ;
-	}
-	node = *stack;
-	while (node->next->next)
-	{
-		node = node->next;
-	}
-	last_node = node->next;
-	node->next = NULL;
-	ft_lstadd_front(stack, last_node);
+	rotate(stack_a);
+	write(1, "ra\n", 3);
+	bench->ra += 1;
 }
 
-void	reverse_rotate_double(t_list **stack_a, t_list **stack_b)
+void	rotate_b(t_list **stack_b, t_bench *bench)
 {
-	if (!stack_a || !stack_b)
-	{
-		return ;
-	}
-	reverse_rotate(stack_a);
-	reverse_rotate(stack_b);
+	rotate(stack_b);
+	write(1, "rb\n", 3);
+	bench->rb += 1;
 }
 
 /* #include <stdio.h>

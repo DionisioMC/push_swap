@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 14:13:25 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/17 20:12:27 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 14:34:05 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,29 @@ void	swap(t_list **stack)
 	*stack = second;
 }
 
-void	swap_double(t_list **stack_a, t_list **stack_b)
+void	swap_double(t_list **stack_a, t_list **stack_b, t_bench *bench)
 {
 	if (!stack_a || !stack_b)
-	{
 		return ;
-	}
 	swap(stack_a);
 	swap(stack_b);
+	write(1, "ss\n", 3);
+	bench->ss += 1;
 }
 
+void	swap_a(t_list **stack_a, t_bench *bench)
+{
+	swap(stack_a);
+	write(1, "sa\n", 3);
+	bench->sa += 1;
+}
+
+void	swap_b(t_list **stack_b, t_bench *bench)
+{
+	swap(stack_b);
+	write(1, "sb\n", 3);
+	bench->sb += 1;
+}
 /* #include <stdio.h>
 int main()
 {
