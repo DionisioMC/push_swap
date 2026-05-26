@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	get_target_position(t_list **stack, int value)
 {
@@ -76,8 +77,6 @@ void	insertion_sort(t_list **stack_a, t_list **stack_b, t_bench *bench)
 		push_a(stack_a, stack_b, bench);
 }
 
-#include <stdio.h>
-
 void	print_stack(char *name, t_list *stack)
 {
 	printf("%s: ", name);
@@ -88,7 +87,6 @@ void	print_stack(char *name, t_list *stack)
 	}
 	printf("\n");
 }
-
 
 /* int	main(void)
 {
@@ -121,4 +119,3 @@ void	print_stack(char *name, t_list *stack)
 	print_stack("B", b);
 	ft_lstclear(&a);
 } */
-

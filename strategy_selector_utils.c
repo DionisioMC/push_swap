@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   strategy_selector_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 14:14:41 by hede-car          #+#    #+#             */
 /*   Updated: 2026/05/26 14:52:53 by hede-car         ###   ########.fr       */
@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	ft_putchar(int c)
 {
@@ -21,7 +20,7 @@ void	ft_putchar(int c)
 void	ft_putstr(char *s)
 {
 	int	i;
-	
+
 	i = 0;
 	while (s[i])
 	{

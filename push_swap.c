@@ -28,9 +28,11 @@ int	main(int argc, char **argv)
 	if (!sb)
 		error_and_exit(&sa, NULL, bench);
 	*sb = NULL;
-	//print_stack("sa", sa);
-	chunk_sort(&sa, sb);
-	/* print_stack("sa", sa);
-	print_stack("sb", *sb); */
+	error_flag_check(argc, argv, &strategy, &bench);
+	sa = parsing(argc, argv);
+	print_stack("sa", sa);
+	quick_sort(&sa, sb);
+	print_stack("sa", sa);
+	print_stack("sb", *sb);
 	//ft_printf("%d\n", compute_disorder())
 }

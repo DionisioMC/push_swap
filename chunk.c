@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:48:27 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/22 19:12:13 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/26 14:59:53 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,68 +68,21 @@ void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-
-#include <stdio.h>
-
 void	chunk_sort(t_list **stack_a, t_list **stack_b)
 {
-	int	size;
-	int	num_chunks;
-	int	*arr;
-	int	chunk_size;
-	int	i;
-	int	j;
+	t_chunk	chunk;
+	int		*arr;
 
-	size = ft_lstsize(*stack_a);
-	num_chunks = ft_sqrt(size);
-	arr = create_array(size, *stack_a);
-	if(!arr)
+	chunk.size = ft_lstsize(*stack_a);
+	chunk.num_chunks = ft_sqrt(chunk.size);
+	arr = create_array(chunk.size, *stack_a);
+	if (!arr)
 		error_and_exit(stack_a, stack_b);
-	ft_sort_int_tab(arr, size);
-	chunk_size = (size / num_chunks);
-	i = 0;
-	while (i < num_chunks)
+	organize_b(chunk, indexes, stack_a, stack_b);
+	while (*stack_b)
 	{
-		j = 0;
-		if (i < size % num_chunks)
-		{
-			while (j < chunk_size + 1)
-			{
-				if (arr[(chunk_size + 1) * (i + 1) - 1] >= (*stack_a)->content)
-				{
-					push(stack_b, stack_a);
-					write(1, "pb\n", 3);
-					j++;
-				}
-				else
-				{
-					rotate(stack_a);
-					write(1, "ra\n", 3);
-				}
-			}
-		}
-		else
-		{
-			while (j < chunk_size)
-			{
-				if (arr[(chunk_size) * (i + 1) - 1 + (size % num_chunks)] >= (*stack_a)->content)
-				{
-					push(stack_b, stack_a);
-					write(1, "pb\n", 3);
-					j++;
-				}
-				else
-				{
-					rotate(stack_a);
-					write(1, "ra\n", 3);
-				}
-			}
-		}
-		i++;
-	}
-	while(*stack_b)
-	{
-		rotate_b_to_top(stack_b, get_target_position(stack_b, find_max(*stack_b)));
+		rotate_b_to_top(stack_b,
+		get_target_position(stack_b, find_max(*stack_b)));
 		push(stack_a, stack_b);
 		write(1, "pa\n", 3);
 	}

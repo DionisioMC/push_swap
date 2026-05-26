@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 18:20:43 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/26 14:44:17 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/26 16:02:38 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	push(t_list **dest, t_list **source)
 {
 	t_list	*next_node;
 
-	if (!source)
+	if (!source || !(*source))
 		return ;
 	next_node = (*source)->next;
 	ft_lstadd_front(dest, *source);

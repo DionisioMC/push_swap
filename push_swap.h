@@ -41,6 +41,12 @@ typedef struct s_bench
 	int	rrr;
 }	t_bench;
 
+typedef struct s_chunk
+{
+	int	size;
+	int	num_chunks;
+}	t_chunk;
+
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
@@ -78,5 +84,16 @@ int		find_min(t_list *stack);
 void	rotate_b_to_top(t_list **stack_b, int pos, t_bench *bench);
 int		get_target_position(t_list **stack, int value);
 void	chunk_sort(t_list **stack_a, t_list **stack_b);
+void	organize_b(t_chunk chunk,
+			int *indexes, t_list **stack_a, t_list **stack_b);
+void	ft_sort_int_tab(int *tab, int size);
+int		*create_array(int size, t_list *stack_a);
+void	quick_sort(t_list **stack_a, t_list **stack_b);
+void	sort_two_a(t_list **a);
+void	sort_two_b(t_list **b);
+void	sort_three_a(t_list **a);
+void	sort_three_b(t_list **b);
+void	quicksort_a(t_list **a, t_list **b, int size);
+void	quicksort_b(t_list **a, t_list **b, int size);
 
 #endif
