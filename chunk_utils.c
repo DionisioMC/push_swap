@@ -6,69 +6,66 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 22:58:08 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/23 23:04:15 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 14:39:06 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    push_chunks_even(int index, int chunk_size, int *indexes, t_list **stack_a, t_list **stack_b)
+void	push_chunks(int limit, int amount, t_list **stack_a, t_list **stack_b)
 {
-    int j;
+	int	j;
 
-    j = 0;
-    while (j < chunk_size + 1)
-    {
-        if (indexes[index] >= (*stack_a)->content)
-        {
-            push(stack_b, stack_a);
-            write(1, "pb\n", 3);
-            j++;
-        }
-        else
-        {
-            rotate(stack_a);
-            write(1, "ra\n", 3);
-        }
-    }
+	j = 0;
+	while (j < amount)
+	{
+		if (limit >= (*stack_a)->content)
+		{
+			push(stack_b, stack_a);
+			write(1, "pb\n", 3);
+			j++;
+		}
+		else
+		{
+			rotate(stack_a);
+			write(1, "ra\n", 3);
+		}
+	}
 }
 
-void    push_chunks_odd(int index, int chunk_size, int *indexes, t_list **stack_a, t_list **stack_b)
+int	get_chunk_amount(int i, int chunk_size, int remainder)
 {
-    int j;
-
-    j = 0;
-    while (j < chunk_size)
-    {
-        if (indexes[index] >= (*stack_a)->content)
-        {
-            push(stack_b, stack_a);
-            write(1, "pb\n", 3);
-            j++;
-        }
-        else
-        {
-            rotate(stack_a);
-            write(1, "ra\n", 3);
-        }
-    }
+	if (i < remainder)
+		return (chunk_size + 1);
+	return (chunk_size);
 }
 
-void    organize_b(int num_chunks, int size, int *indexes, t_list **stack_a, t_list **stack_b)
+int	calculate_limit_index(int i, int chunk_size, int remainder)
 {
-    int i;
-    int chunk_size;
+	if (i < remainder)
+		return ((chunk_size + 1) * (i + 1) - 1);
+	return ((chunk_size * (i + 1)) - 1 + remainder);
+}
 
-    i = 0;
-    chunk_size = (size / num_chunks);
-    ft_sort_int_tab(indexes, size);
-    while (i < num_chunks)
-    {
-        if (i < size % num_chunks)
-            push_chunks_even((chunk_size + 1) * (i + 1) - 1, chunk_size, indexes, stack_a, stack_b);
-        else
-            push_chunks_odd((chunk_size) * (i + 1) - 1 + (size % num_chunks), chunk_size, indexes, stack_a, stack_b);
-        i++;
-    }
-    free(indexes);
+void	organize_b(t_chunk chunk,
+	int *indexes, t_list **stack_a, t_list **stack_b)
+{
+	int	i;
+	int	limit;
+	int	amount;
+	int	limit_index;
+
+	i = 0;
+	ft_sort_int_tab(indexes, chunk.size);
+	while (i < chunk.num_chunks)
+	{
+		amount = get_chunk_amount(i,
+				chunk.size / chunk.num_chunks, chunk.size % chunk.num_chunks);
+		limit_index = calculate_limit_index(i,
+				chunk.size / chunk.num_chunks, chunk.size % chunk.num_chunks);
+		limit = indexes[limit_index];
+		push_chunks(limit, amount, stack_a, stack_b);
+		i++;
+	}
+	free(indexes);
 }

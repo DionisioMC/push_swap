@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 10:15:35 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/21 19:17:12 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/25 12:29:50 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_moves	ft_movesnew(void)
 {
 	t_moves	moves;
-	
+
 	moves.sa = 0;
 	moves.sb = 0;
 	moves.ss = 0;

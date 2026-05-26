@@ -6,11 +6,12 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 18:43:25 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/25 12:31:40 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	get_target_position(t_list **stack, int value)
 {
@@ -93,8 +94,6 @@ void	insertion_sort(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-#include <stdio.h>
-
 void	print_stack(char *name, t_list *stack)
 {
 	printf("%s: ", name);
@@ -105,7 +104,6 @@ void	print_stack(char *name, t_list *stack)
 	}
 	printf("\n");
 }
-
 
 /* int	main(void)
 {
@@ -138,4 +136,3 @@ void	print_stack(char *name, t_list *stack)
 	print_stack("B", b);
 	ft_lstclear(&a);
 } */
-

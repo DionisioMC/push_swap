@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:28:32 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/22 16:48:14 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/26 15:39:54 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	main(int argc, char **argv)
 	*sb = NULL;
 	error_flag_check(argc, argv, &strategy, &bench);
 	sa = parsing(argc, argv);
-	//print_stack("sa", sa);
-	chunk_sort(&sa, sb);
-	/* print_stack("sa", sa);
-	print_stack("sb", *sb); */
+	print_stack("sa", sa);
+	quick_sort(&sa, sb);
+	print_stack("sa", sa);
+	print_stack("sb", *sb);
 	//ft_printf("%d\n", compute_disorder())
 }
