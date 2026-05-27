@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:48:27 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/26 14:59:53 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/27 09:45:26 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_sqrt(int nb)
 
 int	*create_array(int size, t_list *stack_a)
 {
-	int	*arr;
-	int	i;
+	int		*arr;
+	int		i;
 	t_list	*node;
 
 	node = stack_a;
@@ -68,25 +68,26 @@ void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-void	chunk_sort(t_list **stack_a, t_list **stack_b)
+void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench *bench)
 {
 	t_chunk	chunk;
 	int		*arr;
+	t_list	**stacks[2];
 
 	chunk.size = ft_lstsize(*stack_a);
 	chunk.num_chunks = ft_sqrt(chunk.size);
 	arr = create_array(chunk.size, *stack_a);
 	if (!arr)
-		error_and_exit(stack_a, stack_b);
-	organize_b(chunk, indexes, stack_a, stack_b);
+		error_and_exit(stack_a, stack_b, bench);
+	stacks[0] = stack_a;
+	stacks[1] = stack_b;
+	organize_b(chunk, arr, stack_a, stack_b, bench);
 	while (*stack_b)
 	{
 		rotate_b_to_top(stack_b,
-		get_target_position(stack_b, find_max(*stack_b)));
-		push(stack_a, stack_b);
-		write(1, "pa\n", 3);
+			get_target_position(stack_b, find_max(*stack_b)), bench);
+		push_a(stack_a, stack_b, bench);
 	}
-	free(arr);
 }
 
 /* int	main(void)
