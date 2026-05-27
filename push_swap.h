@@ -83,9 +83,8 @@ int		find_max(t_list *stack);
 int		find_min(t_list *stack);
 void	rotate_b_to_top(t_list **stack_b, int pos, t_bench *bench);
 int		get_target_position(t_list **stack, int value);
-void	chunk_sort(t_list **stack_a, t_list **stack_b);
-void	organize_b(t_chunk chunk,
-			int *indexes, t_list **stack_a, t_list **stack_b);
+void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench *bench);
+void	organize_b(t_chunk chunk, int *indexes, t_list **stack_a, t_list **stack_b, t_bench *bench);
 void	ft_sort_int_tab(int *tab, int size);
 int		*create_array(int size, t_list *stack_a);
 void	quick_sort(t_list **stack_a, t_list **stack_b, t_bench *bench);
