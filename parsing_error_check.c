@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_error_check.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/26 14:15:13 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/27 12:11:42 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,34 +67,6 @@ char	**handle_str(char *arg, t_bench *bench)
 	return (args);
 }
 
-char	**ft_argv_split(int	argc, char **argv, t_bench *bench)
-{
-	int		i;
-	int		count;
-	char	**args;
-
-	i = 1;
-	count = 0;
-	args = NULL;
-	while (i++ < argc)
-	{
-		if (check_flag(argv[i]))
-			handle_flag(argv[i], bench);
-		else if (strchr(argv[i], ' '))
-			args = handle_str(argv[i], bench);
-		else
-			count++;
-	}
-	if (count > 0 && args)
-	{
-		free_args(args);
-		error_and_exit(NULL, NULL, bench);
-	}
-	if (args)
-		return (args);
-	return (argv);
-}
-
 void	free_args(char **args)
 {
 	int	i;
@@ -106,7 +78,36 @@ void	free_args(char **args)
 		i++;
 	}
 	free(args);
-	return (NULL);
+}
+
+char	**ft_argv_split(int	argc, char **argv, t_bench *bench)
+{
+	int		i;
+	int		count;
+	char	**args;
+
+	i = 1;
+	count = 0;
+	args = NULL;
+	(void) argc;
+	while (argv[i])
+	{
+		if (check_flag(argv[i]))
+			handle_flag(argv[i], bench);
+		else if (ft_strchr(argv[i], ' '))
+			args = handle_str(argv[i], bench);
+		else
+			count++;
+		i++;
+	}
+	if (count > 0 && args)
+	{
+		free_args(args);
+		error_and_exit(NULL, NULL, bench);
+	}
+	if (args)
+		return (args);
+	return (argv);
 }
 
 void	error_and_exit(t_list **sa, t_list **sb, t_bench *bench)
@@ -124,10 +125,10 @@ void	error_flag_check(char** args, char **argv, t_bench *bench)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	if (args != argv)
-		i = 0;
-	while (args[i++])
+		i = -1;
+	while (args[++i])
 	{
 		if (check_flag(args[i]))
 			continue ;

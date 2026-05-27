@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:48:27 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 09:45:26 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/27 11:40:34 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench *bench)
 		error_and_exit(stack_a, stack_b, bench);
 	stacks[0] = stack_a;
 	stacks[1] = stack_b;
-	organize_b(chunk, arr, stack_a, stack_b, bench);
+	organize_b(chunk, arr, stacks, bench);
 	while (*stack_b)
 	{
 		rotate_b_to_top(stack_b,

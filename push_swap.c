@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:28:32 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 11:09:00 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/27 14:25:51 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv)
 	char	**args;
 
 	bench = ft_benchnew();
-	args = ft_argv_split(argc, argv, bench->strategy, bench->flag);
+	args = ft_argv_split(argc, argv, bench);
 	error_flag_check(args, argv, bench);
 	sa = parsing(args, argv);
 	bench->disorder = compute_disorder(sa);
@@ -29,8 +29,8 @@ int	main(int argc, char **argv)
 		error_and_exit(&sa, NULL, bench);
 	*sb = NULL;
 	print_stack("sa", sa);
-	sort_three_a(sa, bench);
+	quick_sort(&sa, sb, bench);
 	print_stack("sa", sa);
-	//print_stack("sb", *sb);
+	print_stack("sb", *sb);
 	//ft_printf("%d\n", compute_disorder())
 }

@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 11:08:36 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/27 14:22:00 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,17 @@ int		find_min(t_list *stack);
 void	rotate_b_to_top(t_list **stack_b, int pos, t_bench *bench);
 int		get_target_position(t_list **stack, int value);
 void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench *bench);
-void	organize_b(t_chunk chunk, int *indexes, t_list **stack_a, t_list **stack_b, t_bench *bench);
+void	organize_b(t_chunk chunk, int *arr, t_list **stacks[2], t_bench *bench);
 void	ft_sort_int_tab(int *tab, int size);
 int		*create_array(int size, t_list *stack_a);
 void	quick_sort(t_list **stack_a, t_list **stack_b, t_bench *bench);
 void	sort_two_a(t_list **a, t_bench *bench);
 void	sort_two_b(t_list **b, t_bench *bench);
 void	sort_three_a(t_list **a, t_bench *bench);
-void	sort_three_b(t_list **b);
+void	sort_three_b(t_list **b, t_bench *bench);
 void	quicksort_a(t_list **a, t_list **b, t_bench *bench, int size);
 void	quicksort_b(t_list **a, t_list **b, t_bench *bench, int size);
+t_bench	*ft_benchnew(void);
+char	**ft_argv_split(int	argc, char **argv, t_bench *bench);
 
 #endif

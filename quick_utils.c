@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 11:29:40 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 11:12:04 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/27 14:19:59 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	sort_two_b(t_list **b, t_bench *bench)
 		swap_b(b, bench);
 }
 
-void	sort_three_b(t_list **b)
+void	sort_three_b(t_list **b, t_bench *bench)
 {
 	int	x;
 	int	y;
@@ -67,33 +67,27 @@ void	sort_three_b(t_list **b)
 	x = (*b)->content;
 	y = (*b)->next->content;
 	z = (*b)->next->next->content;
-	if (x < y && y < z)
+	if (x < y && y > z && x > z)
+		swap_b(b, bench);
+	else if (x < y)
 	{
-		swap(b);
-		write(1, "sb\n", 3);
-		reverse_rotate(b);
-		write(1, "rrb\n", 4);
+		if (y < z)
+		{
+			rotate_b(b, bench);
+			swap_b(b, bench);
+			reverse_rotate_b(b, bench);
+		}
+		swap_b(b, bench);
+		rotate_b(b, bench);
+		swap_b(b, bench);
+		reverse_rotate_b(b, bench);
 	}
-	else if (x < y && y > z && x < z)
+	else if (x > y && y < z)
 	{
-		reverse_rotate(b);
-		write(1, "rrb\n", 4);
+		rotate_b(b, bench);
+		swap_b(b, bench);
+		reverse_rotate_b(b, bench);
+		if (x < z)
+			swap_b(b, bench);
 	}
-	else if (x > y && y < z && x < z)
-	{
-		rotate(b);
-		write(1, "rb\n", 3);
-	}
-	else if (x < y && y > z && x > z)
-	{
-		swap(b);
-		write(1, "sb\n", 3);
-	}
-	else if (x > y && y < z && x > z)
-	{
-		swap(b);
-		write(1, "sb\n", 3);
-		rotate(b);
-		write(1, "rb\n", 3);
-	}
-}
+} 
