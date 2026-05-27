@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   chunk.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:48:27 by dcoelho           #+#    #+#             */
 /*   Updated: 2026/05/27 09:45:26 by hede-car         ###   ########.fr       */

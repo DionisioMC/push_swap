@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:28:32 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 09:51:33 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/27 11:09:00 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,9 @@ int	main(int argc, char **argv)
 	if (!sb)
 		error_and_exit(&sa, NULL, bench);
 	*sb = NULL;
-	error_flag_check(args, argv, bench);
-	sa = parsing(argv, args);
 	print_stack("sa", sa);
-	quick_sort(&sa, sb);
+	sort_three_a(sa, bench);
 	print_stack("sa", sa);
-	print_stack("sb", *sb);
+	//print_stack("sb", *sb);
 	//ft_printf("%d\n", compute_disorder())
 }

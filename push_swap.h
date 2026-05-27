@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 09:25:54 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/27 11:08:36 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ void	chunk_sort(t_list **stack_a, t_list **stack_b, t_bench *bench);
 void	organize_b(t_chunk chunk, int *indexes, t_list **stack_a, t_list **stack_b, t_bench *bench);
 void	ft_sort_int_tab(int *tab, int size);
 int		*create_array(int size, t_list *stack_a);
-void	quick_sort(t_list **stack_a, t_list **stack_b);
-void	sort_two_a(t_list **a);
-void	sort_two_b(t_list **b);
-void	sort_three_a(t_list **a);
+void	quick_sort(t_list **stack_a, t_list **stack_b, t_bench *bench);
+void	sort_two_a(t_list **a, t_bench *bench);
+void	sort_two_b(t_list **b, t_bench *bench);
+void	sort_three_a(t_list **a, t_bench *bench);
 void	sort_three_b(t_list **b);
-void	quicksort_a(t_list **a, t_list **b, int size);
-void	quicksort_b(t_list **a, t_list **b, int size);
+void	quicksort_a(t_list **a, t_list **b, t_bench *bench, int size);
+void	quicksort_b(t_list **a, t_list **b, t_bench *bench, int size);
 
 #endif
