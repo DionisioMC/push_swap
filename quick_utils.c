@@ -6,22 +6,19 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 11:29:40 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/26 16:12:11 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/27 11:12:04 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort_two_a(t_list **a)
+void	sort_two_a(t_list **a, t_bench *bench)
 {
 	if ((*a)->content > (*a)->next->content)
-	{
-		swap(a);
-		write(1, "sa\n", 3);
-	}
+		swap_a(a, bench);
 }
 
-void	sort_three_a(t_list **a)
+void	sort_three_a(t_list **a, t_bench *bench)
 {
 	int	x;
 	int	y;
@@ -31,43 +28,34 @@ void	sort_three_a(t_list **a)
 	y = (*a)->next->content;
 	z = (*a)->next->next->content;
 	if (x > y && y < z && x < z)
+		swap_a(a, bench);
+	else if (x > y)
 	{
-		swap(a);
-		write(1, "sa\n", 3);
+		if (y > z)
+		{
+			rotate_a(a, bench);
+			swap_a(a, bench);
+			reverse_rotate_a(a, bench);
+		}
+		swap_a(a, bench);
+		rotate_a(a, bench);
+		swap_a(a, bench);
+		reverse_rotate_a(a, bench);
 	}
-	else if (x > y && y > z)
+	else if (x < y && y > z)
 	{
-		swap(a);
-		write(1, "sa\n", 3);
-		reverse_rotate(a);
-		write(1, "rra\n", 4);
-	}
-	else if (x > y && y < z && x > z)
-	{
-		rotate(a);
-		write(1, "ra\n", 3);
-	}
-	else if (x < y && y > z && x < z)
-	{
-		swap(a);
-		write(1, "sa\n", 3);
-		rotate(a);
-		write(1, "ra\n", 3);
-	}
-	else if (x < y && y > z && x > z)
-	{
-		reverse_rotate(a);
-		write(1, "rra\n", 4);
+		rotate_a(a, bench);
+		swap_a(a, bench);
+		reverse_rotate_a(a, bench);
+		if (x > z)
+			swap_a(a, bench);
 	}
 }
 
-void	sort_two_b(t_list **b)
+void	sort_two_b(t_list **b, t_bench *bench)
 {
 	if ((*b)->content < (*b)->next->content)
-	{
-		swap(b);
-		write(1, "sb\n", 3);
-	}
+		swap_b(b, bench);
 }
 
 void	sort_three_b(t_list **b)
