@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/27 12:11:42 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/28 17:39:03 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	**handle_str(char *arg, t_bench *bench)
 {
 	char	**args;
 
-	args =	ft_split(arg, ' ');
+	args = ft_split(arg, ' ');
 	if (!args)
 		error_and_exit(NULL, NULL, bench);
 	return (args);
@@ -80,7 +80,7 @@ void	free_args(char **args)
 	free(args);
 }
 
-char	**ft_argv_split(int	argc, char **argv, t_bench *bench)
+char	**ft_argv_split(char **argv, t_bench *bench)
 {
 	int		i;
 	int		count;
@@ -89,7 +89,6 @@ char	**ft_argv_split(int	argc, char **argv, t_bench *bench)
 	i = 1;
 	count = 0;
 	args = NULL;
-	(void) argc;
 	while (argv[i])
 	{
 		if (check_flag(argv[i]))
@@ -121,7 +120,7 @@ void	error_and_exit(t_list **sa, t_list **sb, t_bench *bench)
 	exit(1);
 }
 
-void	error_flag_check(char** args, char **argv, t_bench *bench)
+void	error_flag_check(char **args, char **argv, t_bench *bench)
 {
 	int	i;
 
@@ -170,7 +169,7 @@ t_list	*parsing(char **args, char **argv)
 		i++;
 	}
 	if (args != argv)
-			free_args(args);
+		free_args(args);
 	if (!sa)
 		exit(0);
 	return (sa);

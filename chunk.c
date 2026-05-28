@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:48:27 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 11:40:34 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/28 14:38:44 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	*create_array(int size, t_list *stack_a)
 	if (!arr)
 		return (NULL);
 	i = 0;
-	while (node)
+	while (node && i < size)
 	{
 		arr[i++] = node->content;
 		node = node->next;

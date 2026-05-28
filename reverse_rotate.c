@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:48:13 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/26 14:52:15 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/28 16:18:32 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	reverse_rotate(t_list **stack)
 	ft_lstadd_front(stack, last_node);
 }
 
-void	reverse_rotate_double(t_list **stack_a, t_list **stack_b, t_bench *bench)
+void	reverse_rotate_double(t_list **stack_a,
+	t_list **stack_b, t_bench *bench)
 {
 	if (!stack_a || !stack_b)
 		return ;

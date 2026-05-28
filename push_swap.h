@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 14:22:00 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/28 17:37:00 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ void	push_b(t_list **stack_b, t_list **stack_a, t_bench *bench);
 void	rotate_double(t_list **stack_a, t_list **stack_b, t_bench *bench);
 void	rotate_a(t_list **stack_a, t_bench *bench);
 void	rotate_b(t_list **stack_b, t_bench *bench);
-void	reverse_rotate_double(t_list **stack_a, t_list **stack_b, t_bench *bench);
+void	reverse_rotate_double(t_list **stack_a,
+			t_list **stack_b, t_bench *bench);
 void	reverse_rotate_a(t_list **stack_a, t_bench *bench);
 void	reverse_rotate_b(t_list **stack_b, t_bench *bench);
 char	**ft_split(char const *s, char c);
@@ -73,7 +74,7 @@ int		is_int(char *arg);
 int		has_not_repeated(char **argv);
 void	error_and_exit(t_list **sa, t_list **sb, t_bench *bench);
 t_list	*parsing(char **argv, char **args);
-void	error_flag_check(char** args, char **argv, t_bench *bench);
+void	error_flag_check(char **args, char **argv, t_bench *bench);
 void	print_stack(char *name, t_list *stack);
 int		ft_strcmp(char *s1, char *s2);
 void	ft_printf(const char *format, ...);
@@ -95,6 +96,9 @@ void	sort_three_b(t_list **b, t_bench *bench);
 void	quicksort_a(t_list **a, t_list **b, t_bench *bench, int size);
 void	quicksort_b(t_list **a, t_list **b, t_bench *bench, int size);
 t_bench	*ft_benchnew(void);
-char	**ft_argv_split(int	argc, char **argv, t_bench *bench);
+char	**ft_argv_split(char **argv, t_bench *bench);
+int		top(t_list *s);
+int		second(t_list *s);
+int		third(t_list *s);
 
 #endif

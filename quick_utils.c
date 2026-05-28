@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 11:29:40 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 14:19:59 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/28 17:32:20 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,11 @@ void	sort_two_a(t_list **a, t_bench *bench)
 
 void	sort_three_a(t_list **a, t_bench *bench)
 {
-	int	x;
-	int	y;
-	int	z;
-
-	x = (*a)->content;
-	y = (*a)->next->content;
-	z = (*a)->next->next->content;
-	if (x > y && y < z && x < z)
+	if (top(*a) > second(*a) && second(*a) < third(*a) && top(*a) < third(*a))
 		swap_a(a, bench);
-	else if (x > y)
+	else if (top(*a) > second(*a))
 	{
-		if (y > z)
+		if (second(*a) > third(*a))
 		{
 			rotate_a(a, bench);
 			swap_a(a, bench);
@@ -42,12 +35,12 @@ void	sort_three_a(t_list **a, t_bench *bench)
 		swap_a(a, bench);
 		reverse_rotate_a(a, bench);
 	}
-	else if (x < y && y > z)
+	else if (top(*a) < second(*a) && second(*a) > third(*a))
 	{
 		rotate_a(a, bench);
 		swap_a(a, bench);
 		reverse_rotate_a(a, bench);
-		if (x > z)
+		if (top(*a) > third(*a))
 			swap_a(a, bench);
 	}
 }
@@ -60,18 +53,11 @@ void	sort_two_b(t_list **b, t_bench *bench)
 
 void	sort_three_b(t_list **b, t_bench *bench)
 {
-	int	x;
-	int	y;
-	int	z;
-
-	x = (*b)->content;
-	y = (*b)->next->content;
-	z = (*b)->next->next->content;
-	if (x < y && y > z && x > z)
+	if (top(*b) < second(*b) && second(*b) > third(*b) && top(*b) > third(*b))
 		swap_b(b, bench);
-	else if (x < y)
+	else if (top(*b) < second(*b))
 	{
-		if (y < z)
+		if (second(*b) < third(*b))
 		{
 			rotate_b(b, bench);
 			swap_b(b, bench);
@@ -82,12 +68,27 @@ void	sort_three_b(t_list **b, t_bench *bench)
 		swap_b(b, bench);
 		reverse_rotate_b(b, bench);
 	}
-	else if (x > y && y < z)
+	else if (top(*b) > second(*b) && second(*b) < third(*b))
 	{
 		rotate_b(b, bench);
 		swap_b(b, bench);
 		reverse_rotate_b(b, bench);
-		if (x < z)
+		if (top(*b) < third(*b))
 			swap_b(b, bench);
 	}
-} 
+}
+
+int	top(t_list *s)
+{
+	return (s->content);
+}
+
+int	second(t_list *s)
+{
+	return (s->next->content);
+}
+
+int	third(t_list *s)
+{
+	return (s->next->next->content);
+}
