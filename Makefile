@@ -6,7 +6,7 @@
 #    By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 15:27:36 by dcoelho           #+#    #+#              #
-#    Updated: 2026/05/29 11:11:24 by dcoelho          ###   ########.fr        #
+#    Updated: 2026/05/29 15:22:38 by dcoelho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 FILES = push_swap.c push.c rotate.c swap.c \
 	reverse_rotate.c push_swap_utils.c push_swap_utils_2.c insertion.c \
