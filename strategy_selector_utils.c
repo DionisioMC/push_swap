@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/20 14:14:41 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/26 14:52:53 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/29 11:58:38 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,23 @@ void	ft_putdouble(double n)
 	int	decimal;
 
 	intgr = (int) n;
-	decimal = (int)((n - intgr) * 100);
-	ft_putnbr(intgr);
+	decimal = (int)((n - intgr) * 1000);
+	if (decimal >= 995)
+		ft_putnbr(intgr + 1);
+	else
+		ft_putnbr(intgr);
 	ft_putchar('.');
-	ft_putnbr(decimal);
-	if (decimal == 0)
-		ft_putchar('0');
+	if (decimal < 5 || decimal >= 995)
+		ft_putstr("00");
+	else if (decimal % 10 >= 5)
+	{
+		decimal += 10;
+		if (decimal < 100)
+			ft_putchar('0');
+		ft_putnbr(decimal / 10);
+	}
+	else
+		ft_putnbr(decimal / 10);
 	ft_putchar('%');
 }
 

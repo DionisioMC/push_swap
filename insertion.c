@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   insertion.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/26 15:23:07 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/29 14:50:33 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	get_target_position(t_list **stack, int value)
 	t_list	*node;
 
 	i = 0;
-	if (!stack)
+	if (!stack || !(*stack))
 		return (0);
 	node = *stack;
 	while (node->next)

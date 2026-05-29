@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/28 17:37:00 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/29 14:42:35 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,20 @@ typedef struct s_list
 
 typedef struct s_bench
 {
-	int	flag;
-	int	strategy;
-	int	disorder;
-	int	sa;
-	int	sb;
-	int	ss;
-	int	pa;
-	int	pb;
-	int	ra;
-	int	rb;
-	int	rr;
-	int	rra;
-	int	rrb;
-	int	rrr;
+	int		flag;
+	int		strategy;
+	double	disorder;
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
 }	t_bench;
 
 typedef struct s_chunk
@@ -73,7 +73,7 @@ int		is_valid_num(char *arg);
 int		is_int(char *arg);
 int		has_not_repeated(char **argv);
 void	error_and_exit(t_list **sa, t_list **sb, t_bench *bench);
-t_list	*parsing(char **argv, char **args);
+t_list	*parsing(char **args, char **argv, t_bench *bench);
 void	error_flag_check(char **args, char **argv, t_bench *bench);
 void	print_stack(char *name, t_list *stack);
 int		ft_strcmp(char *s1, char *s2);
@@ -100,5 +100,7 @@ char	**ft_argv_split(char **argv, t_bench *bench);
 int		top(t_list *s);
 int		second(t_list *s);
 int		third(t_list *s);
+void	ft_bench(t_bench *bench);
+void	free_args(char **args);
 
 #endif

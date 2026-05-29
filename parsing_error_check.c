@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/28 17:39:03 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/05/29 14:41:50 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,7 @@ void	error_flag_check(char **args, char **argv, t_bench *bench)
 	}
 }
 
-t_list	*parsing(char **args, char **argv)
+t_list	*parsing(char **args, char **argv, t_bench *bench)
 {
 	int		i;
 	t_list	*sa;
@@ -171,6 +171,9 @@ t_list	*parsing(char **args, char **argv)
 	if (args != argv)
 		free_args(args);
 	if (!sa)
+	{
+		free(bench);
 		exit(0);
+	}
 	return (sa);
 }
