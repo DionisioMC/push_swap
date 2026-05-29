@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+         #
+#    By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 15:27:36 by dcoelho           #+#    #+#              #
-#    Updated: 2026/05/20 14:49:59 by hede-car         ###   ########.fr        #
+#    Updated: 2026/05/29 11:11:24 by dcoelho          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,10 +14,12 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
-FILES = error_check.c push_swap.c push.c rotate.c swap.c \
-	push_swap_utils.c push_swap_utils_2.c 
+FILES = push_swap.c push.c rotate.c swap.c \
+	reverse_rotate.c push_swap_utils.c push_swap_utils_2.c insertion.c \
+	error_check_utils.c chunk.c chunk_utils.c ft_split.c parsing_error_check.c \
+	quick.c quick_utils.c strategy_selector_utils.c bench.c
 
 OBJ= $(FILES:.c=.o)
 

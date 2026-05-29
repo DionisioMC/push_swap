@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   chunk_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 22:58:08 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/27 09:42:51 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/29 10:20:53 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	push_chunks(int limit, int amount, t_list **stacks[2], t_bench *bench)
 	{
 		if (limit >= (*stacks[0])->content)
 		{
-			push_b(stacks[0], stacks[1], bench);
+			push_b(stacks[1], stacks[0], bench);
 			j++;
 		}
 		else

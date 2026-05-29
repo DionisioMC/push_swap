@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 10:15:35 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/26 14:17:27 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/05/29 11:02:03 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,18 +60,18 @@ double	compute_disorder(t_list *sa)
 	return (mistakes / total_pairs * 100);
 }
 
-void	ft_bench(double disorder, t_bench *bench)
+void	ft_bench(t_bench *bench)
 {
 	int	total;
 
 	total = bench->sa + bench->sb + bench->ss + bench->pa + bench->pb
 		+ bench->ra + bench->rb + bench->rr + bench->rra + bench->rrb
 		+ bench->rrr;
-	ft_printf("[bench] disorder: %f\n", disorder);
+	ft_printf("[bench] disorder: %f\n", bench->disorder);
 	ft_printf("[bench] strategy: ");
-	if ((bench->strategy == 4 || bench->strategy == 0) && disorder < 20)
+	if ((bench->strategy == 4 || bench->strategy == 0) && bench->disorder < 20)
 		ft_printf("Adaptive / O(n²)\n");
-	else if ((bench->strategy == 4 || bench->strategy == 0) && disorder < 50)
+	else if ((bench->strategy == 4 || bench->strategy == 0) && bench->disorder < 50)
 		ft_printf("Adaptive / O(n√n)\n");
 	else if (bench->strategy == 4 || bench->strategy == 0)
 		ft_printf("Adaptive / O(nlogn)\n");
