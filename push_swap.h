@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 11:06:55 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/06/01 14:38:27 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,9 @@ int		second(t_list *s);
 int		third(t_list *s);
 void	ft_bench(t_bench *bench);
 void	free_args(char **args);
+int		ft_sqrt(int nb);
+void	small_sort_a(t_list **a, t_bench *bench, int size);
+void	small_sort_b(t_list **b, t_bench *bench, int size);
+int		assign_pivot(t_list **a, t_list **b, t_bench *bench, int size);
 
 #endif

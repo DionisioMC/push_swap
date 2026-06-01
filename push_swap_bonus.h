@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:30:38 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 11:06:40 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/06/01 14:26:14 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+# define BUFFER_SIZE 5
+
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(int content);
-int		ft_lstsize(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
@@ -42,5 +43,14 @@ void	error_check(char **args, char **argv);
 int		ft_strcmp(char *s1, char *s2);
 char	**ft_argv_split(char **argv);
 void	free_args(char **args);
+void	push(t_list **dest, t_list **source);
+void	swap(t_list **stack);
+void	swap_double(t_list **a, t_list **b);
+void	rotate(t_list **stack);
+void	rotate_double(t_list **a, t_list **b);
+void	reverse_rotate(t_list **stack);
+void	reverse_rotate_double(t_list **a, t_list **b);
+char	*ft_strchr(const char *s, int c);
+char	*get_next_line(int fd);
 
 #endif
