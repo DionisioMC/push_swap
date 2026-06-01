@@ -1,16 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick_utils.c                                      :+:      :+:    :+:   */
+/*   6_quick_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 11:29:40 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/28 17:32:20 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/01 10:51:57 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	assign_pivot(t_list **a, t_list **b, t_bench *bench, int size)
+{
+	int	*array;
+	int	pivot;
+
+	array = create_array(size, *a);
+	if (!array)
+		error_and_exit(a, b, bench);
+	ft_sort_int_tab(array, size);
+	pivot = array[size / 2];
+	free(array);
+	return (pivot);
+}
 
 void	sort_two_a(t_list **a, t_bench *bench)
 {
@@ -76,19 +90,4 @@ void	sort_three_b(t_list **b, t_bench *bench)
 		if (top(*b) < third(*b))
 			swap_b(b, bench);
 	}
-}
-
-int	top(t_list *s)
-{
-	return (s->content);
-}
-
-int	second(t_list *s)
-{
-	return (s->next->content);
-}
-
-int	third(t_list *s)
-{
-	return (s->next->next->content);
 }

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:54:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/29 16:15:10 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/01 10:30:04 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	error_flag_check(char **args, char **argv)
+void	error_check(char **args, char **argv)
 {
 	int	i;
 
@@ -36,15 +36,6 @@ void	error_flag_check(char **args, char **argv)
 	}
 }
 
-void	error_and_exit(t_list **sa, t_list **sb)
-{
-	if (sa && *sa)
-		ft_lstclear(sa);
-	if (sb && *sb)
-		ft_lstclear(sb);
-	write(2, "Error\n", 6);
-	exit(1);
-}
 
 char	*remove_zeros(char *arg)
 {
@@ -91,7 +82,7 @@ int	is_int(char *arg)
 {
 	long	num;
 
-	num = ft_atoi(arg);
+	num = ft_atol(arg);
 	if (num < (long) INT_MIN || num > (long) INT_MAX)
 		return (0);
 	return (1);
@@ -117,7 +108,7 @@ int	has_not_repeated(char **argv)
 	return (1);
 }
 
-long	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	long	i;
 	long	signal;
@@ -155,50 +146,22 @@ int	ft_strcmp(char *s1, char *s2)
 t_list	*parsing(char **args, char **argv)
 {
 	int		i;
-	t_list	*sa;
+	t_list	*a;
 	int		content;
 
 	i = 1;
 	if (args != argv)
 		i = 0;
-	sa = NULL;
+	a = NULL;
 	while (args[i])
 	{
-		content = (int) ft_atoi(args[i]);
-		ft_lstadd_back(&sa, ft_lstnew(content));
+		content = (int) ft_atol(args[i]);
+		ft_lstadd_back(&a, ft_lstnew(content));
 		i++;
 	}
 	if (args != argv)
 		free_args(args);
-	if (!sa)
+	if (!a)
 		exit(0);
-	return (sa);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*node;
-
-	if (lst && new)
-	{
-		if (!*lst)
-			*lst = new;
-		else
-		{
-			node = ft_lstlast(*lst);
-			node->next = new;
-		}
-	}
-}
-
-t_list	*ft_lstnew(int content)
-{
-	t_list	*new;
-
-	new = (t_list *)malloc(sizeof(t_list));
-	if (!new)
-		return (NULL);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	return (a);
 }

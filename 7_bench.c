@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bench.c                                            :+:      :+:    :+:   */
+/*   7_bench.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 10:15:35 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/29 11:02:03 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/01 11:04:25 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_bench	*ft_benchnew(void)
 	return (bench);
 }
 
-double	compute_disorder(t_list *sa)
+double	compute_disorder(t_list *a)
 {
 	double	mistakes;
 	double	total_pairs;
@@ -44,7 +44,7 @@ double	compute_disorder(t_list *sa)
 
 	mistakes = 0;
 	total_pairs = 0;
-	fst_node = sa;
+	fst_node = a;
 	while (fst_node->next)
 	{
 		scd_node = fst_node->next;
@@ -71,7 +71,8 @@ void	ft_bench(t_bench *bench)
 	ft_printf("[bench] strategy: ");
 	if ((bench->strategy == 4 || bench->strategy == 0) && bench->disorder < 20)
 		ft_printf("Adaptive / O(n²)\n");
-	else if ((bench->strategy == 4 || bench->strategy == 0) && bench->disorder < 50)
+	else if ((bench->strategy == 4 || bench->strategy == 0)
+		&& bench->disorder < 50)
 		ft_printf("Adaptive / O(n√n)\n");
 	else if (bench->strategy == 4 || bench->strategy == 0)
 		ft_printf("Adaptive / O(nlogn)\n");

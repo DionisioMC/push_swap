@@ -1,59 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_2.c                                :+:      :+:    :+:   */
+/*   3_general_algorithm_utils.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 14:50:41 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/19 18:30:46 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/01 11:01:47 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-long	ft_atoi(const char *nptr)
-{
-	long	i;
-	long	signal;
-
-	i = 0;
-	signal = 1;
-	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
-		nptr++;
-	if (*nptr == '+' || *nptr == '-')
-	{
-		if (*nptr == '-')
-			signal *= -1;
-		nptr++;
-	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		i = i * 10 + *nptr - 48;
-		nptr++;
-	}
-	return (i * signal);
-}
-
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	if (!lst || !del)
-		return ;
-	del(&(lst->content));
-	free(lst);
-}
-
-int	ft_strcmp(char *s1, char *s2)
-{
-	int	n;
-
-	n = 0;
-	while ((s1[n] == s2[n]) && (s1[n] != '\0'))
-	{
-		n++;
-	}
-	return (s1[n] - s2[n]);
-}
 
 int	find_max(t_list *stack)
 {
@@ -81,4 +38,50 @@ int	find_min(t_list *stack)
 		stack = stack->next;
 	}
 	return (min);
+}
+
+int	get_target_position(t_list **stack, int value)
+{
+	int		i;
+	t_list	*node;
+
+	i = 0;
+	if (!stack || !(*stack))
+		return (0);
+	node = *stack;
+	while (node->next)
+	{
+		if (node->content > value && node->next->content < value)
+			return (i + 1);
+		else if (value >= find_max(*stack)
+			&& node->next->content == find_max(*stack))
+			return (i + 1);
+		else if (value < find_min(*stack)
+			&& node->next->content == find_min(*stack))
+			return (i + 2);
+		node = node->next;
+		i++;
+	}
+	return (0);
+}
+
+void	rotate_b_to_top(t_list **b, int pos, t_bench *bench)
+{
+	int	size;
+	int	i;
+
+	if (!b)
+		return ;
+	size = ft_lstsize(*b);
+	i = 0;
+	if (pos <= (size - 1) / 2)
+	{
+		while (i++ < pos)
+			rotate_b(b, bench);
+	}
+	else
+	{
+		while (i++ < size - pos)
+			reverse_rotate_b(b, bench);
+	}
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   chunk_utils.c                                      :+:      :+:    :+:   */
+/*   5_chunk_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 22:58:08 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/29 10:20:53 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/01 10:46:22 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,16 @@ void	organize_b(t_chunk chunk, int *arr, t_list **stacks[2], t_bench *bench)
 		i++;
 	}
 	free(arr);
+}
+
+int	ft_sqrt(int nb)
+{
+	int	i;
+
+	i = 1;
+	if (nb <= 0)
+		return (0);
+	while (i * i <= nb)
+		i++;
+	return (i - 1);
 }

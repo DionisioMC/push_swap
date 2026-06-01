@@ -1,46 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quick.c                                            :+:      :+:    :+:   */
+/*   6_quick.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 23:09:47 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/05/28 17:31:50 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/01 10:50:23 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	small_sort_a(t_list **a, t_bench *bench, int size)
-{
-	if (size == 2)
-		sort_two_a(a, bench);
-	else if (size == 3)
-		sort_three_a(a, bench);
-}
-
-void	small_sort_b(t_list **b, t_bench *bench, int size)
-{
-	if (size == 2)
-		sort_two_b(b, bench);
-	else if (size == 3)
-		sort_three_b(b, bench);
-}
-
-int	assign_pivot(t_list **a, t_list **b, t_bench *bench, int size)
-{
-	int	*array;
-	int	pivot;
-
-	array = create_array(size, *a);
-	if (!array)
-		error_and_exit(a, b, bench);
-	ft_sort_int_tab(array, size);
-	pivot = array[size / 2];
-	free(array);
-	return (pivot);
-}
 
 void	quicksort_a(t_list **a, t_list **b, t_bench *bench, int size)
 {
@@ -100,10 +70,10 @@ void	quicksort_b(t_list **a, t_list **b, t_bench *bench, int size)
 		push_b(b, a, bench);
 }
 
-void	quick_sort(t_list **stack_a, t_list **stack_b, t_bench *bench)
+void	quick_sort(t_list **a, t_list **b, t_bench *bench)
 {
 	int	size;
 
-	size = ft_lstsize(*stack_a);
-	quicksort_a(stack_a, stack_b, bench, size);
+	size = ft_lstsize(*a);
+	quicksort_a(a, b, bench, size);
 }

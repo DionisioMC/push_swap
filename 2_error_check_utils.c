@@ -1,37 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_check_utils.c                                :+:      :+:    :+:   */
+/*   2_error_check_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:13:04 by hede-car          #+#    #+#             */
-/*   Updated: 2026/05/26 11:48:25 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/06/01 10:28:12 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	check_flag(char *arg)
-{
-	char	*flags[6];
-	int		i;
-
-	flags[0] = NULL;
-	flags[1] = "--simple";
-	flags[2] = "--medium";
-	flags[3] = "--complex";
-	flags[4] = "--adaptive";
-	flags[5] = "--bench";
-	i = 1;
-	while (i < 6)
-	{
-		if (ft_strcmp(arg, flags[i]) == 0)
-			return (i);
-		i++;
-	}
-	return (0);
-}
 
 char	*remove_zeros(char *arg)
 {
@@ -78,7 +57,7 @@ int	is_int(char *arg)
 {
 	long	num;
 
-	num = ft_atoi(arg);
+	num = ft_atol(arg);
 	if (num < (long) INT_MIN || num > (long) INT_MAX)
 		return (0);
 	return (1);
@@ -106,4 +85,27 @@ int	has_not_repeated(char **argv)
 		i++;
 	}
 	return (1);
+}
+
+long	ft_atol(const char *nptr)
+{
+	long	i;
+	long	signal;
+
+	i = 0;
+	signal = 1;
+	while ((*nptr >= 9 && *nptr <= 13) || *nptr == 32)
+		nptr++;
+	if (*nptr == '+' || *nptr == '-')
+	{
+		if (*nptr == '-')
+			signal *= -1;
+		nptr++;
+	}
+	while (*nptr >= '0' && *nptr <= '9')
+	{
+		i = i * 10 + *nptr - 48;
+		nptr++;
+	}
+	return (i * signal);
 }
