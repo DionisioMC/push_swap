@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   6_quick_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 11:29:40 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 10:51:57 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/06/02 16:00:33 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	sort_three_a(t_list **a, t_bench *bench)
 		rotate_a(a, bench);
 		swap_a(a, bench);
 		reverse_rotate_a(a, bench);
-		if (top(*a) > third(*a))
+		if (top(*a) > second(*a))
 			swap_a(a, bench);
 	}
 }
@@ -87,7 +87,7 @@ void	sort_three_b(t_list **b, t_bench *bench)
 		rotate_b(b, bench);
 		swap_b(b, bench);
 		reverse_rotate_b(b, bench);
-		if (top(*b) < third(*b))
+		if (top(*b) < second(*b))
 			swap_b(b, bench);
 	}
 }

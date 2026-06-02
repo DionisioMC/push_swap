@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:30:38 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 14:26:14 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/02 10:31:21 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	reverse_rotate(t_list **stack);
 void	reverse_rotate_double(t_list **a, t_list **b);
 char	*ft_strchr(const char *s, int c);
 char	*get_next_line(int fd);
+int		do_move(char **move, t_list **a, t_list **b);
 
 #endif

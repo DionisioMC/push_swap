@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:45:55 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 17:44:32 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/02 16:02:29 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,37 +25,19 @@ void	free_args(char **args)
 	free(args);
 }
 
-void	do_move(char **move, t_list **a, t_list **b)
+void	handle_move(char **move, t_list **a, t_list **b)
 {
-	if (ft_strcmp(*move, "sa\n") == 0)
-		swap(a);
-	else if (ft_strcmp(*move, "sb\n") == 0)
-		swap(b);
-	else if (ft_strcmp(*move, "ss\n") == 0)
-		swap_double(a, b);
-	else if (ft_strcmp(*move, "pa\n") == 0)
-		push(a, b);
-	else if (ft_strcmp(*move, "pb\n") == 0)
-		push(b, a);
-	else if (ft_strcmp(*move, "ra\n") == 0)
-		rotate(a);
-	else if (ft_strcmp(*move, "rb\n") == 0)
-		rotate(b);
-	else if (ft_strcmp(*move, "rr\n") == 0)
-		rotate_double(a, b);
-	else if (ft_strcmp(*move, "rra\n") == 0)
-		reverse_rotate(a);
-	else if (ft_strcmp(*move, "rrb\n") == 0)
-		reverse_rotate(b);
-	else if (ft_strcmp(*move, "rrr\n") == 0)
-		reverse_rotate_double(a, b);
-	else
-	{
-		free(*move);
-		error_and_exit(a, b);
-	}
-	free(*move);
 	*move = get_next_line(0);
+	while (move && *move)
+	{
+		if (!do_move(move, a, b))
+		{
+			free(*move);
+			error_and_exit(a, b);
+		}
+		free(*move);
+		*move = get_next_line(0);
+	}
 }
 
 void	error_and_exit(t_list **a, t_list **b)
@@ -106,11 +88,7 @@ int	main(int argc, char **argv)
 	if (!b && argc)
 		error_and_exit(&a, NULL);
 	*b = NULL;
-	move = get_next_line(0);
-	while (move)
-	{
-		do_move(&move, &a, b);
-	}
+	handle_move(&move, &a, b);
 	if (sorted_check(a) && !(*b))
 		write(1, "OK\n", 3);
 	else

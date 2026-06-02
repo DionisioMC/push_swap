@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 12:06:55 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 17:19:20 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/02 11:59:50 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,8 @@ char	*get_next_line(int fd)
 	int			i;
 
 	i = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL);
+	if (fd == -1)
+		return (free(stash), NULL);
 	stash = read_from_file(stash, fd);
 	if (!stash)
 		return (NULL);

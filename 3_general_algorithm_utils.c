@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_general_algorithm_utils.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 14:50:41 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 11:01:47 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:19:58 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ int	get_target_position(t_list **stack, int value)
 		else if (value < find_min(*stack)
 			&& node->next->content == find_min(*stack))
 			return (i + 2);
+		else if (value < find_min(*stack)
+			&& node->content == find_min(*stack))
+			return (i + 1);
 		node = node->next;
 		i++;
 	}

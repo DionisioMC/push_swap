@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   4_insertion.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 15:39:19 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 10:44:40 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:07:21 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,8 @@
 
 void	insertion_sort(t_list **a, t_list **b, t_bench *bench)
 {
-	t_list	*node;
 	int		pos;
 
-	node = *a;
 	while (*a)
 	{
 		pos = get_target_position(b, (*a)->content);

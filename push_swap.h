@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 14:38:27 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/02 16:47:28 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,9 @@ int		ft_sqrt(int nb);
 void	small_sort_a(t_list **a, t_bench *bench, int size);
 void	small_sort_b(t_list **b, t_bench *bench, int size);
 int		assign_pivot(t_list **a, t_list **b, t_bench *bench, int size);
+void	sort_two(t_list **a, t_bench *bench);
+void	sort_three(t_list **a, t_bench *bench);
+void	sort_four(t_list **a, t_list **b, t_bench *bench);
+void	sort_five(t_list **a, t_list **b, t_bench *bench);
 
 #endif
