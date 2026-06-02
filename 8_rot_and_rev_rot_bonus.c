@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rot_and_rev_rot_bonus.c                            :+:      :+:    :+:   */
+/*   8_rot_and_rev_rot_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,6 +11,22 @@
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
+
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*node;
+
+	if (lst && new)
+	{
+		if (!*lst)
+			*lst = new;
+		else
+		{
+			node = ft_lstlast(*lst);
+			node->next = new;
+		}
+	}
+}
 
 void	rotate(t_list **stack)
 {
@@ -37,7 +53,7 @@ void	reverse_rotate(t_list **stack)
 	t_list	*node;
 	t_list	*last_node;
 
-	if (!stack)
+	if (!stack || !(*stack))
 		return ;
 	node = *stack;
 	while (node->next->next)

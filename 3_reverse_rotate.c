@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_reverse_rotate.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:48:13 by hede-car          #+#    #+#             */
-/*   Updated: 2026/06/01 10:33:21 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/06/01 15:56:30 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	reverse_rotate(t_list **stack)
 	t_list	*node;
 	t_list	*last_node;
 
-	if (!stack)
+	if (!stack || !(*stack))
 		return ;
 	node = *stack;
 	while (node->next->next)

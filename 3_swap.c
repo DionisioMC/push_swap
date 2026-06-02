@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   3_swap.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 14:13:25 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/01 10:33:29 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/06/01 15:55:12 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	swap(t_list **stack)
 	t_list	*first;
 	t_list	*second;
 
-	if (!stack || !(*stack)->next)
+	if (!stack || !(*stack) || !(*stack)->next)
 	{
 		return ;
 	}
