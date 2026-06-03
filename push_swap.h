@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/02 16:47:28 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/03 14:21:52 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ typedef struct s_chunk
 	int	size;
 	int	num_chunks;
 }	t_chunk;
+
+typedef struct s_move
+{
+	int	cost_a;
+	int	cost_b;
+	int	total;
+}	t_move;
 
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstnew(int content);
@@ -109,5 +116,9 @@ void	sort_two(t_list **a, t_bench *bench);
 void	sort_three(t_list **a, t_bench *bench);
 void	sort_four(t_list **a, t_list **b, t_bench *bench);
 void	sort_five(t_list **a, t_list **b, t_bench *bench);
+int		ft_abs(int i);
+int		calc_cost(int size, int pos);
+int		get_target_position_a(t_list **stack, int value);
+void	do_double_rotations(t_list **a, t_list **b, t_move *mv, t_bench *bench);
 
 #endif

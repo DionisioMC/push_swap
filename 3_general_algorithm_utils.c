@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 14:50:41 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/02 15:19:58 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/03 10:45:10 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,24 @@ int	get_target_position(t_list **stack, int value)
 {
 	int		i;
 	t_list	*node;
+	int		max;
+	int		min;
 
 	i = 0;
 	if (!stack || !(*stack))
 		return (0);
+	max = find_max(*stack);
+	min = find_min(*stack);
 	node = *stack;
 	while (node->next)
 	{
 		if (node->content > value && node->next->content < value)
 			return (i + 1);
-		else if (value >= find_max(*stack)
-			&& node->next->content == find_max(*stack))
+		else if (value >= max && node->next->content == max)
 			return (i + 1);
-		else if (value < find_min(*stack)
-			&& node->next->content == find_min(*stack))
+		else if (value < min && node->next->content == min)
 			return (i + 2);
-		else if (value < find_min(*stack)
-			&& node->content == find_min(*stack))
+		else if (value < min && node->content == min)
 			return (i + 1);
 		node = node->next;
 		i++;
