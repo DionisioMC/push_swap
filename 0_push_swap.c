@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   0_push_swap.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:28:32 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/02 16:55:41 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/02 19:07:32 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	select_small_algorithm(t_list **a, t_list **b, t_bench *bench)
 			sort_four(a, b, bench);
 		else if (size == 3)
 			sort_three(a, bench);
-		else if (bench->strategy == 1)
+		else if (size == 2)
 			sort_two(a, bench);
 	}
 	if (bench->flag == 1)
