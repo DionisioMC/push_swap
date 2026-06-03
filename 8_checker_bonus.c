@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/29 15:45:55 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/02 16:02:29 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/03 14:34:58 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	error_and_exit(t_list **a, t_list **b)
 		ft_lstclear(b);
 		free(b);
 	}
-	else if (!(*b))
+	else if (b && !(*b))
 	{
 		free(b);
 	}

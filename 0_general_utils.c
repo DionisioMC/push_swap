@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 10:09:06 by hede-car          #+#    #+#             */
-/*   Updated: 2026/06/01 17:25:56 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/03 14:35:21 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	error_and_exit(t_list **a, t_list **b, t_bench *bench)
 		ft_lstclear(b);
 		free(b);
 	}
-	else if (!(*b))
+	else if (b && !(*b))
 	{
 		free(b);
 	}

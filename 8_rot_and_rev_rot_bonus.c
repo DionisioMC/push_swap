@@ -56,7 +56,7 @@ void	reverse_rotate(t_list **stack)
 	if (!stack || !(*stack))
 		return ;
 	node = *stack;
-	while (node->next->next)
+	while (node->next && node->next->next)
 	{
 		node = node->next;
 	}

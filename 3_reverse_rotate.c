@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 14:48:13 by hede-car          #+#    #+#             */
-/*   Updated: 2026/06/03 14:06:20 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/03 14:40:38 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	reverse_rotate(t_list **stack)
 	if (!stack || !(*stack))
 		return ;
 	node = *stack;
-	while (node->next->next)
+	while (node->next && node->next->next)
 	{
 		node = node->next;
 	}

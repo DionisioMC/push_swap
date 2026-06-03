@@ -6,7 +6,7 @@
 /*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 11:37:15 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/02 10:47:23 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/06/03 14:45:07 by dcoelho          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	do_move(char **move, t_list **a, t_list **b)
 	else if (ft_strcmp(*move, "sb\n") == 0)
 		return (swap(b), 1);
 	else if (ft_strcmp(*move, "ss\n") == 0)
-		return (swap_double(a, b), 0);
+		return (swap_double(a, b), 1);
 	else if (ft_strcmp(*move, "pa\n") == 0)
 		return (push(a, b), 1);
 	else if (ft_strcmp(*move, "pb\n") == 0)
