@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 14:27:48 by dcoelho           #+#    #+#             */
-/*   Updated: 2026/06/03 14:21:52 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/09/16 11:29:05 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ char	**ft_split(char const *s, char c);
 int		check_flag(char *arg);
 int		is_valid_num(char *arg);
 int		is_int(char *arg);
-int		has_not_repeated(char **argv);
+int		has_not_repeated(char **args, char **argv);
 void	error_and_exit(t_list **a, t_list **b, t_bench *bench);
 t_list	*parsing(char **args, char **argv, t_bench *bench);
 void	error_check(char **args, char **argv, t_bench *bench);

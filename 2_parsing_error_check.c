@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   2_parsing_error_check.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dcoelho <dcoelho@student.42porto.com>      +#+  +:+       +#+        */
+/*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/14 17:47:24 by hede-car          #+#    #+#             */
-/*   Updated: 2026/06/01 14:41:56 by dcoelho          ###   ########.fr       */
+/*   Updated: 2026/09/16 11:25:09 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	error_check(char **args, char **argv, t_bench *bench)
 			}
 		}
 	}
-	if (!has_not_repeated(args))
+	if (!has_not_repeated(args, argv))
 	{
 		if (args != argv)
 			free_args(args);

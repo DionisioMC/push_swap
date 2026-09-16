@@ -6,7 +6,7 @@
 /*   By: hede-car <hede-car@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/13 10:13:04 by hede-car          #+#    #+#             */
-/*   Updated: 2026/06/01 10:28:12 by hede-car         ###   ########.fr       */
+/*   Updated: 2026/09/16 11:34:39 by hede-car         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,22 @@ int	is_int(char *arg)
 	return (1);
 }
 
-int	has_not_repeated(char **argv)
+int	has_not_repeated(char **args, char **argv)
 {
 	int	i;
 	int	j;
 
 	i = 1;
-	while (argv[i])
+	if (args != argv)
+		i = 0;
+	while (args[i])
 	{
-		if (!check_flag(argv[i]))
+		if (!check_flag(args[i]))
 		{
 			j = i + 1;
-			while (argv[j])
+			while (args[j])
 			{
-				if (ft_strcmp(remove_zeros(argv[i]), remove_zeros(argv[j]))
+				if (ft_strcmp(remove_zeros(args[i]), remove_zeros(args[j]))
 					== 0)
 					return (0);
 				j++;
